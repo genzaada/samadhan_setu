@@ -1,0 +1,40 @@
+[2026-01-07T06:07:16.890Z] [createIssue] Request received. Title: street light malfunction , User: 695df6ecd5dffa35bd7b0484
+[2026-01-07T06:07:16.903Z] [createIssue] SUCCESS. IssueID: 695df814d5dffa35bd7b0488, ReportedBy: 695df6ecd5dffa35bd7b0484
+[2026-01-07T06:11:59.958Z] [createIssue] Request received. Title: street malfunctioning, User: 695df6ecd5dffa35bd7b0484
+[2026-01-07T06:11:59.964Z] [createIssue] SUCCESS. IssueID: 695df92fd5dffa35bd7b048d, ReportedBy: 695df6ecd5dffa35bd7b0484
+[2026-01-07T07:14:10.868Z] [createIssue] Request received. Title: street light malfunctioning , User: 695e03778fd074dd1b98eda6
+[2026-01-07T07:14:10.878Z] [createIssue] SUCCESS. IssueID: 695e07c28fd074dd1b98edb1, ReportedBy: 695e03778fd074dd1b98eda6
+[2026-01-07T07:15:00.764Z] [createIssue] Request received. Title: yrdyfdhgf, User: 695e03778fd074dd1b98eda6
+[2026-01-07T07:15:00.771Z] [createIssue] SUCCESS. IssueID: 695e07f48fd074dd1b98edb4, ReportedBy: 695e03778fd074dd1b98eda6
+[2026-01-07T07:20:51.320Z] [createIssue] Request received. Title: akdjfaksldj, User: 695e092add05aa30e142ae06
+[2026-01-07T07:20:51.330Z] [createIssue] SUCCESS. IssueID: 695e0953dd05aa30e142ae0a, ReportedBy: 695e092add05aa30e142ae06
+[2026-01-07T07:20:55.389Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:20:55.403Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:04.356Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:04.365Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:04.379Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:04.384Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:23.557Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:23.562Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:23.577Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:23.584Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:26.472Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:26.478Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:26.495Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:26.500Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:39.848Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:39.854Z] [getIssues] Found 1 issues.
+[2026-01-07T07:21:39.872Z] [getIssues] Fetching for User: 695e092add05aa30e142ae06 (citizen), Query: {"reportedBy":"695e092add05aa30e142ae06"}
+[2026-01-07T07:21:39.881Z] [getIssues] Found 1 issues.
+[2026-01-07T07:22:12.828Z] [getIssues] Fetching for User: 695e09a0dd05aa30e142ae2a (admin), Query: {}
+[2026-01-07T07:22:12.832Z] [getIssues] Found 1 issues.
+[2026-01-07T07:23:57.735Z] [getIssues] Fetching for User: 695e0a03dd05aa30e142ae33 (worker), Query: {"assignedTo":"695e0a03dd05aa30e142ae33"}
+[2026-01-07T07:23:57.736Z] [getIssues] Found 0 issues.
+[2026-01-07T07:24:08.548Z] [getIssues] Fetching for User: 695e09a0dd05aa30e142ae2a (admin), Query: {}
+[2026-01-07T07:24:08.552Z] [getIssues] Found 1 issues.
+[2026-01-07T07:24:15.938Z] [getIssues] Fetching for User: 695e09a0dd05aa30e142ae2a (admin), Query: {}
+[2026-01-07T07:24:15.944Z] [getIssues] Found 1 issues.
+[2026-01-07T07:24:27.547Z] [getIssues] Fetching for User: 695e0a03dd05aa30e142ae33 (worker), Query: {"assignedTo":"695e0a03dd05aa30e142ae33"}
+[2026-01-07T07:24:27.551Z] [getIssues] Found 1 issues.
+[2026-01-07T07:25:01.735Z] [getIssues] Fetching for User: 695e09a0dd05aa30e142ae2a (admin), Query: {}
+[2026-01-07T07:25:01.738Z] [getIssues] Found 1 issues.

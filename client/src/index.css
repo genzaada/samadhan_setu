@@ -1,22 +1,72 @@
 :root {
+  /* 
+   * Premium "Slate" Color Palette 
+   * Replacing simple HSL math with curated values for better aesthetic
+   */
+  --hue: 223;
+
+  /* Light Mode Defaults */
+  --bg: #f8fafc;
+  /* Slate 50 */
+  --fg: #0f172a;
+  /* Slate 900 */
+  --surface: #ffffff;
   --primary: #6366f1;
+  /* Indigo 500 */
   --primary-hover: #4f46e5;
+  --text-muted: #64748b;
+  /* Slate 500 */
+  --border: #e2e8f0;
+  /* Slate 200 */
+
+  /* Mapping to App Variables */
+  --background: var(--bg);
+  --text: var(--fg);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+
+  /* Transition Settings */
+  --trans-dur: 0.4s;
+  --trans-timing: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* Other Variables */
+  --radius: 0.75rem;
   --secondary: #ec4899;
-  --background: #0f172a;
-  --surface: #1e293b;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
   --danger: #ef4444;
   --success: #22c55e;
   --warning: #f59e0b;
-  --radius: 0.75rem;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Mode Overrides - Using data-theme attribute for robustness */
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  /* Slate 900 */
+  --fg: #f1f5f9;
+  /* Slate 100 */
+  --surface: #1e293b;
+  /* Slate 800 */
+  --primary: #818cf8;
+  /* Indigo 400 */
+  --primary-hover: #6366f1;
+  --text-muted: #94a3b8;
+  /* Slate 400 */
+  --border: #334155;
+  /* Slate 700 */
+
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+}
+
+/* Legacy support if body class is still used */
+body.dark-mode {
+  --bg: #0f172a;
+  --fg: #f1f5f9;
+  --surface: #1e293b;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 body {
@@ -24,6 +74,7 @@ body {
   background-color: var(--background);
   color: var(--text);
   line-height: 1.6;
+  transition: background-color var(--trans-dur) var(--trans-timing), color var(--trans-dur) var(--trans-timing);
 }
 
 a {
@@ -66,7 +117,7 @@ a {
 .btn-secondary {
   background: var(--surface);
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
 }
 
 .btn-danger {
@@ -78,15 +129,15 @@ a {
   background: var(--surface);
   border-radius: var(--radius);
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
 
 .input {
   width: 100%;
   padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text);
   font-size: 1rem;

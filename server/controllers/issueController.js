@@ -1,27 +1,47 @@
 const Issue = require('../models/Issue');
 const { enhanceIssueDescription, summarizeIssues, generateFeedback } = require('../ai/chains');
+const fs = require('fs');
+const path = require('path');
+
+const LOG_FILE = path.join(__dirname, '../debug_issues.log');
+
+const logToFile = (message) => {
+    try {
+        const timestamp = new Date().toISOString();
+        const logLine = `[${timestamp}] ${message}\n`;
+        fs.appendFileSync(LOG_FILE, logLine);
+    } catch (e) { console.error("Log failed", e); }
+};
 
 exports.createIssue = async (req, res) => {
     try {
         const { title, description, location, images, category, audio } = req.body;
+        logToFile(`[createIssue] Request received. Title: ${title}, User: ${req.user.id}`);
 
-        // AI Enhancement
-        const aiResult = await enhanceIssueDescription(description);
+        // AI Enhancement - resilient
+        let aiResult = { enhanced_description: null, category: null, priority: 'Medium' };
+        try {
+            aiResult = await enhanceIssueDescription(description);
+        } catch (aiError) {
+            logToFile(`[createIssue] AI Failed: ${aiError.message}`);
+        }
 
         const issue = await Issue.create({
             title,
             original_description: description,
-            ai_enhanced_description: aiResult.enhanced_description,
-            category: category || aiResult.category, // Use user category if provided, else AI
-            priority: aiResult.priority,
+            ai_enhanced_description: aiResult.enhanced_description || description, // Fallback
+            category: category || aiResult.category || 'Maintenance', // Fallback
+            priority: aiResult.priority || 'Medium',
             location,
             images,
             audio,
             reportedBy: req.user.id
         });
 
+        logToFile(`[createIssue] SUCCESS. IssueID: ${issue._id}, ReportedBy: ${issue.reportedBy}`);
         res.status(201).json(issue);
     } catch (error) {
+        logToFile(`[createIssue] ERROR: ${error.message}`);
         res.status(500).json({ message: 'Error creating issue', error: error.message });
     }
 };
@@ -36,9 +56,15 @@ exports.getIssues = async (req, res) => {
             query.assignedTo = req.user.id;
         }
 
+        logToFile(`[getIssues] Fetching for User: ${req.user.id} (${req.user.role}), Query: ${JSON.stringify(query)}`);
+
         const issues = await Issue.find(query).sort({ createdAt: -1 }).populate('reportedBy', 'name').populate('assignedTo', 'name');
+
+        logToFile(`[getIssues] Found ${issues.length} issues.`);
+
         res.json(issues);
     } catch (error) {
+        logToFile(`[getIssues] ERROR: ${error.message}`);
         res.status(500).json({ message: 'Error fetching issues', error: error.message });
     }
 };
@@ -89,8 +115,13 @@ exports.resolveIssue = async (req, res) => {
         issue.status = 'Pending Verification';
 
         // Generate AI Feedback
-        const feedback = await generateFeedback(issue.title, remark);
-        issue.ai_feedback = feedback;
+        try {
+            const feedback = await generateFeedback(issue.title, remark);
+            issue.ai_feedback = feedback;
+        } catch (aiError) {
+            console.error("AI Feedback skipped in controller:", aiError);
+            require('fs').appendFileSync('debug_error.log', `AI Error: ${aiError.message}\n`);
+        }
 
         issue.status_history.push({
             status: 'Pending Verification',
@@ -102,6 +133,7 @@ exports.resolveIssue = async (req, res) => {
         await issue.save();
         res.json(issue);
     } catch (error) {
+        require('fs').appendFileSync('debug_error.log', `Resolve Error: ${error.message}\nStack: ${error.stack}\n`);
         res.status(500).json({ message: 'Error resolving issue', error: error.message });
     }
 };

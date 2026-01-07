@@ -63,7 +63,6 @@ const Register = () => {
                         className="input"
                         value={formData.role}
                         onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                        style={{ backgroundColor: 'var(--surface)' }}
                     >
                         <option value="citizen">Citizen</option>
                         <option value="admin">Authority (Admin)</option>

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import API, { createIssue } from '../services/api';
 import CategorySelection from '../components/CategorySelection';
 import ImageUpload from '../components/ImageUpload';
@@ -21,6 +22,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const ReportIssue = () => {
+    const { t } = useLanguage();
     const [step, setStep] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [formData, setFormData] = useState({
@@ -148,32 +150,31 @@ const ReportIssue = () => {
                 const url = URL.createObjectURL(blob);
                 setAudioUrl(url);
 
-                // Convert to Base64 for submission
+                // Convert to Base64 for submission (Attachment only)
                 const reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = () => {
-                    setFormData(prev => ({ ...prev, audio: reader.result }));
+                    const base64String = reader.result;
+                    setFormData(prev => ({ ...prev, audio: base64String }));
                 };
             };
 
             mediaRecorderRef.current.start();
 
-            // 2. Start Speech Recognition (RESTORED)
+            // 2. Start Speech Recognition (Visual Feedback + Transcript Source)
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (SpeechRecognition) {
                 const recognition = new SpeechRecognition();
-                recognition.continuous = true; // Keep listening
+                recognition.continuous = true;
                 recognition.interimResults = true;
-                recognition.lang = voiceLang; // Use selected language
+                recognition.lang = voiceLang;
 
                 recognition.onresult = (event) => {
                     let fullTranscript = '';
-                    // Iterate through ALL results to build the complete transcript
                     for (let i = 0; i < event.results.length; ++i) {
                         fullTranscript += event.results[i][0].transcript;
                     }
                     setTranscript(fullTranscript);
-                    // Update ref for immediate access in stopRecording
                     transcriptRef.current = fullTranscript;
                 };
 
@@ -211,39 +212,15 @@ const ReportIssue = () => {
             setRecording(false);
             clearInterval(timerRef.current);
 
-            // Process Transcript with AI (RESTORED)
+            // Use Client-Side Transcript Directly
             const finalTranscript = transcriptRef.current;
             console.log("Stopping recording. Final Transcript:", finalTranscript);
 
-            // Only process if we have a meaningful transcript
-            if (finalTranscript && finalTranscript.trim().length > 1) {
-                setProcessingVoice(true);
-                try {
-                    const { data } = await API.post('/ai/process-voice', { text: finalTranscript });
-                    console.log("AI Processed Result:", data);
-
-                    if (data.success && data.data) {
-                        const { title, description_clean_english, category } = data.data;
-
-                        // Auto-fill form
-                        setFormData(prev => ({
-                            ...prev,
-                            title: title || prev.title,
-                            description: description_clean_english || finalTranscript // Fallback to raw transcript
-                        }));
-                    }
-                } catch (error) {
-                    console.error("Voice Processing Failed", error);
-                    // Fallback: just put transcription in description
-                    setFormData(prev => ({
-                        ...prev,
-                        description: finalTranscript
-                    }));
-                } finally {
-                    setProcessingVoice(false);
-                }
-            } else {
-                console.warn("Transcript too short to process.");
+            if (finalTranscript && finalTranscript.trim().length > 0) {
+                setFormData(prev => ({
+                    ...prev,
+                    description: finalTranscript
+                }));
             }
         }
     };
@@ -348,7 +325,7 @@ const ReportIssue = () => {
                     <div style={{ marginBottom: '1rem', padding: '1rem', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)' }}>
                         <label style={{ display: 'block', marginBottom: '0.75rem', fontWeight: 600 }}>Voice Description (Optional)</label>
 
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', background: '#f9fafb', padding: '0.75rem', borderRadius: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', background: 'var(--bg)', padding: '0.75rem', borderRadius: '8px' }}>
                             {!recording && (
                                 <select
                                     value={voiceLang}
@@ -356,9 +333,10 @@ const ReportIssue = () => {
                                     style={{
                                         padding: '0.5rem',
                                         borderRadius: '6px',
-                                        border: '1px solid #d1d5db',
+                                        border: '1px solid var(--border)',
                                         fontSize: '0.85rem',
-                                        background: 'white',
+                                        background: 'var(--surface)',
+                                        color: 'var(--text)',
                                         cursor: 'pointer'
                                     }}
                                 >
@@ -399,7 +377,7 @@ const ReportIssue = () => {
                         </div>
 
                         {(recording || transcript || processingVoice) && (
-                            <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                            <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: 'var(--bg)', borderRadius: '8px', border: '1px solid var(--border)' }}>
                                 {processingVoice ? (
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontSize: '0.9rem' }}>
                                         <Loader2 className="animate-spin" size={14} /> Processing voice description...

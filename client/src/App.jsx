@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -23,68 +24,73 @@ const PrivateRoute = ({ children, allowedRoles }) => {
   return children;
 };
 
+
+
 const App = () => {
   return (
-    <LanguageProvider>
-      <Navbar />
-      <div className="container" style={{ padding: '2rem 1rem' }}>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+    <ThemeProvider>
+      <LanguageProvider>
+        <Navbar />
+        <div className="container" style={{ padding: '2rem 1rem' }}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-          <Route path="/citizen" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <CitizenDashboard />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/report" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <ReportIssue />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/map" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <NearbyIssues />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/my-reports" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <MyReports />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/notifications" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <Notifications />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/feedback" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <Feedback />
-            </PrivateRoute>
-          } />
-          <Route path="/citizen/profile" element={
-            <PrivateRoute allowedRoles={['citizen']}>
-              <Profile />
-            </PrivateRoute>
-          } />
+            <Route path="/citizen" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <CitizenDashboard />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/report" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <ReportIssue />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/map" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <NearbyIssues />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/my-reports" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <MyReports />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/notifications" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <Notifications />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/feedback" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <Feedback />
+              </PrivateRoute>
+            } />
+            <Route path="/citizen/profile" element={
+              <PrivateRoute allowedRoles={['citizen']}>
+                <Profile />
+              </PrivateRoute>
+            } />
 
-          <Route path="/admin" element={
-            <PrivateRoute allowedRoles={['admin']}>
-              <AdminDashboard />
-            </PrivateRoute>
-          } />
+            <Route path="/admin" element={
+              <PrivateRoute allowedRoles={['admin']}>
+                <AdminDashboard />
+              </PrivateRoute>
+            } />
 
-          <Route path="/worker" element={
-            <PrivateRoute allowedRoles={['worker']}>
-              <WorkerDashboard />
-            </PrivateRoute>
-          } />
+            <Route path="/worker" element={
+              <PrivateRoute allowedRoles={['worker']}>
+                <WorkerDashboard />
+              </PrivateRoute>
+            } />
 
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </div>
-    </LanguageProvider>
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </div>
+      </LanguageProvider>
+    </ThemeProvider>
   );
+
 };
 
 export default App;

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, Sun, Moon } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
+import ThemeSwitch from './ThemeSwitch'; // Import ThemeSwitch
 
 import { useLanguage } from '../context/LanguageContext';
 
@@ -23,6 +24,7 @@ const Navbar = () => {
                     Samadhan Setu
                 </Link>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <ThemeSwitch /> {/* Add ThemeSwitch here */}
                     <LanguageSelector />
                     {user ? (
                         <>
