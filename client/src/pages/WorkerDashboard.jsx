@@ -49,17 +49,22 @@ const WorkerDashboard = () => {
     };
 
     return (
-        <div style={{ display: 'flex', height: '100vh', fontFamily: 'Inter, sans-serif' }}>
-            {/* SIDEBAR - Glassmorphism */}
+        <div style={{ display: 'flex', height: '100vh', fontFamily: 'Inter, sans-serif', padding: '1.5rem', gap: '1.5rem' }}>
+            {/* SIDEBAR - Floating Glass Island */}
             <aside style={{
-                width: '280px',
-                background: 'rgba(0, 0, 0, 0.2)', // More transparent to match header
+                width: '18vw',
+                minWidth: '260px',
+                maxWidth: '320px',
+                background: 'rgba(0, 0, 0, 0.2)',
                 backdropFilter: 'blur(12px)',
-                borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+                // Removed borderRight as it's now detached
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '24px', // Curved edges
                 display: 'flex',
                 flexDirection: 'column',
                 flexShrink: 0,
-                color: 'white'
+                color: 'white',
+                transition: 'width 0.3s ease'
             }}>
                 {/* Brand */}
                 <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', marginBottom: '1rem' }}>
@@ -77,7 +82,7 @@ const WorkerDashboard = () => {
                 {/* Profile Widget */}
                 <div style={{ padding: '0 1rem', marginBottom: '1.5rem' }}>
                     <div style={{
-                        background: 'rgba(255, 255, 255, 0.05)', borderRadius: '12px', padding: '1rem',
+                        background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', padding: '1rem',
                         display: 'flex', alignItems: 'center', gap: '0.75rem', border: '1px solid rgba(255, 255, 255, 0.1)'
                     }}>
                         <div style={{
@@ -93,10 +98,10 @@ const WorkerDashboard = () => {
                     </div>
                     {/* Stats Row */}
                     <div style={{ display: 'flex', marginTop: '0.75rem', gap: '0.5rem' }}>
-                        <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '600', color: 'white', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '600', color: 'white', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                             <Leaf size={12} /> 1,280 pts
                         </div>
-                        <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '6px', fontSize: '0.75rem', fontWeight: '600', color: 'white', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '8px', fontSize: '0.75rem', fontWeight: '600', color: 'white', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                             ★ 4.7
                         </div>
                     </div>
@@ -120,7 +125,7 @@ const WorkerDashboard = () => {
                             style={{
                                 display: 'flex', alignItems: 'center', gap: '0.75rem',
                                 width: '100%', padding: '0.75rem 1rem',
-                                borderRadius: '8px', border: 'none',
+                                borderRadius: '12px', border: 'none',
                                 background: activeTab === item.id ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
                                 color: activeTab === item.id ? 'white' : 'rgba(255, 255, 255, 0.7)',
                                 fontSize: '0.9rem', fontWeight: activeTab === item.id ? '600' : '500',
@@ -143,15 +148,17 @@ const WorkerDashboard = () => {
             {/* MAIN CONTENT - Transparent background */}
             <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative' }}>
 
-                {/* Top Header - Glassmorphism */}
+                {/* Top Header - Floating Glassmorphism */}
                 <header style={{
                     height: '70px',
                     background: 'rgba(0, 0, 0, 0.2)',
                     backdropFilter: 'blur(10px)',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '24px', // Curved edges
+                    marginBottom: '1.5rem', // Space below header
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 2rem'
                 }}>
-                    <div style={{ position: 'relative', width: '400px' }}>
+                    <div style={{ position: 'relative', flex: 1, maxWidth: '500px' }}>
                         <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(255, 255, 255, 0.5)' }} />
                         <input
                             type="text"
@@ -160,7 +167,7 @@ const WorkerDashboard = () => {
                                 width: '100%', padding: '0.6rem 1rem 0.6rem 2.5rem',
                                 background: 'rgba(255, 255, 255, 0.1)',
                                 border: '1px solid rgba(255, 255, 255, 0.1)',
-                                borderRadius: '8px',
+                                borderRadius: '12px',
                                 outline: 'none', color: 'white',
                                 fontSize: '0.9rem'
                             }}
@@ -178,14 +185,14 @@ const WorkerDashboard = () => {
                     </div>
                 </header>
 
-                {/* Dashboard Content */}
-                <div style={{ flex: 1, overflowY: 'auto', padding: '2rem' }}>
+                {/* Dashboard Content - No extra padding needed as root container has it */}
+                <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.5rem' /* Scrollbar space */ }}>
 
                     {/* Progress Card - Glassmorphism */}
                     <div style={{
                         background: 'rgba(0, 0, 0, 0.3)',
                         backdropFilter: 'blur(10px)',
-                        borderRadius: '16px', padding: '1.5rem', marginBottom: '1.5rem',
+                        borderRadius: '24px', padding: '1.5rem', marginBottom: '1.5rem',
                         border: '1px solid rgba(255, 255, 255, 0.1)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -200,11 +207,11 @@ const WorkerDashboard = () => {
                     </div>
 
                     {/* Split View */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '1.5rem', height: 'calc(100vh - 280px)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(400px, 1.5fr) minmax(350px, 1fr)', gap: '1.5rem', height: 'calc(100vh - 280px)' }}>
 
                         {/* LEFT: Map & Task List */}
                         {activeTab === 'total_reports' ? (
-                            <div style={{ gridColumn: 'span 2', background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '16px', padding: '1.5rem', border: '1px solid rgba(255, 255, 255, 0.1)', overflowY: 'auto' }}>
+                            <div style={{ gridColumn: 'span 2', background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '24px', padding: '1.5rem', border: '1px solid rgba(255, 255, 255, 0.1)', overflowY: 'auto' }}>
                                 <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>Total Reports History</h2>
                                 <table style={{ width: '100%', borderCollapse: 'collapse', color: 'white' }}>
                                     <thead>
@@ -240,7 +247,7 @@ const WorkerDashboard = () => {
                         ) : (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                 {/* "Map" Placeholder */}
-                                <div style={{ background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)', overflow: 'hidden', flex: 1, position: 'relative' }}>
+                                <div style={{ background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.1)', overflow: 'hidden', flex: 1, position: 'relative' }}>
                                     <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         <MapPin size={18} color="#4ade80" />
                                         <span style={{ fontWeight: '600', color: 'white' }}>Live task map</span>
@@ -262,7 +269,7 @@ const WorkerDashboard = () => {
                                             style={{
                                                 background: selectedIssue?._id === issue._id ? 'rgba(74, 222, 128, 0.2)' : 'rgba(0, 0, 0, 0.3)',
                                                 backdropFilter: 'blur(10px)',
-                                                borderRadius: '12px', padding: '1rem',
+                                                borderRadius: '24px', padding: '1rem',
                                                 border: selectedIssue?._id === issue._id ? '1px solid #4ade80' : '1px solid rgba(255, 255, 255, 0.1)',
                                                 marginBottom: '1rem', cursor: 'pointer',
                                                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -271,7 +278,7 @@ const WorkerDashboard = () => {
                                         >
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                                 <div style={{
-                                                    width: '40px', height: '40px', borderRadius: '8px',
+                                                    width: '40px', height: '40px', borderRadius: '12px',
                                                     background: 'rgba(255, 255, 255, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center'
                                                 }}>
                                                     <ChevronDown color={selectedIssue?._id === issue._id ? '#4ade80' : 'rgba(255, 255, 255, 0.7)'} />
@@ -300,7 +307,7 @@ const WorkerDashboard = () => {
                             <div style={{
                                 background: 'rgba(0, 0, 0, 0.3)',
                                 backdropFilter: 'blur(10px)',
-                                borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)',
+                                borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.1)',
                                 display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto'
                             }}>
                                 {/* Details Header */}
@@ -364,7 +371,7 @@ const WorkerDashboard = () => {
                                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                             <button
                                                 style={{
-                                                    padding: '1.5rem', border: '1px dashed rgba(255, 255, 255, 0.3)', borderRadius: '8px',
+                                                    padding: '1.5rem', border: '1px dashed rgba(255, 255, 255, 0.3)', borderRadius: '16px',
                                                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
                                                     background: 'rgba(255, 255, 255, 0.05)', cursor: 'pointer', color: 'rgba(255, 255, 255, 0.6)'
                                                 }}
@@ -399,7 +406,7 @@ const WorkerDashboard = () => {
                                             value={resolutionData.remark}
                                             onChange={e => setResolutionData({ ...resolutionData, remark: e.target.value })}
                                             style={{
-                                                width: '100%', padding: '0.75rem', borderRadius: '8px',
+                                                width: '100%', padding: '0.75rem', borderRadius: '16px',
                                                 border: '1px solid rgba(255, 255, 255, 0.3)',
                                                 background: 'rgba(0, 0, 0, 0.2)',
                                                 color: 'white',
@@ -416,7 +423,7 @@ const WorkerDashboard = () => {
                                             width: '100%', padding: '1rem',
                                             background: 'linear-gradient(135deg, #22c55e, #16a34a)', // Green Gradient
                                             color: 'white',
-                                            border: 'none', borderRadius: '8px',
+                                            border: 'none', borderRadius: '16px',
                                             fontSize: '1rem', fontWeight: '700',
                                             cursor: 'pointer',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
@@ -431,7 +438,7 @@ const WorkerDashboard = () => {
                             <div style={{
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)',
-                                borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'rgba(255, 255, 255, 0.4)'
+                                borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'rgba(255, 255, 255, 0.4)'
                             }}>
                                 Select a task to view details
                             </div>

@@ -50,8 +50,8 @@ const Notifications = () => {
     };
 
     return (
-        <div className="container fade-in">
-            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem' }}>
+        <div className="container fade-in" style={{ color: 'white' }}>
+            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem', color: 'white' }}>
                 <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back to Dashboard
             </button>
             <h1 style={{ marginBottom: '1.5rem' }}>Notifications</h1>
@@ -59,7 +59,7 @@ const Notifications = () => {
             {loading ? <div style={{ textAlign: 'center' }}>Loading...</div> : (
                 <div className="grid grid-cols-1">
                     {notifications.map((notif) => (
-                        <div key={notif.id} className="card" style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
+                        <div key={notif.id} className="glass-card-dark" style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
                             <div style={{ background: 'var(--surface)', padding: '0.5rem', borderRadius: '50%' }}>
                                 <Bell size={20} color="var(--primary)" />
                             </div>

@@ -33,8 +33,27 @@ const ImageUpload = ({ onImageSelect, label = "Upload Image" }) => {
             </label>
 
             {!preview ? (
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                    <label className="btn btn-secondary" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <label className="btn" style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        color: 'white',
+                        backdropFilter: 'blur(10px)',
+                        transition: 'all 0.2s'
+                    }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+                            e.currentTarget.style.transform = 'translateY(-1px)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                        }}
+                    >
                         <Upload size={18} />
                         Upload File
                         <input
@@ -44,7 +63,28 @@ const ImageUpload = ({ onImageSelect, label = "Upload Image" }) => {
                             style={{ display: 'none' }}
                         />
                     </label>
-                    <label className="btn btn-primary" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <label className="btn" style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        background: 'rgba(16, 185, 129, 0.2)', // Green tint
+                        border: '1px solid rgba(16, 185, 129, 0.4)',
+                        color: '#34d399',
+                        backdropFilter: 'blur(10px)',
+                        transition: 'all 0.2s'
+                    }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'rgba(16, 185, 129, 0.3)';
+                            e.currentTarget.style.transform = 'translateY(-1px)';
+                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'rgba(16, 185, 129, 0.2)';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
                         <Camera size={18} />
                         Take Photo
                         <input

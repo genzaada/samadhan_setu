@@ -74,13 +74,11 @@ const AdminDashboard = () => {
                 {/* Total Stats Card */}
                 <div
                     onClick={() => setFilterStatus('All')}
+                    className="glass-card"
                     style={{
-                        background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', cursor: 'pointer',
+                        padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #2563eb', // Blue
-                        boxShadow: 'var(--shadow)',
                         opacity: filterStatus === 'All' ? 1 : 0.7,
-                        transition: 'all 0.2s',
-                        color: 'var(--text)',
                         position: 'relative'
                     }}
                 >
@@ -99,13 +97,11 @@ const AdminDashboard = () => {
                 {/* Pending Card */}
                 <div
                     onClick={() => setFilterStatus('Pending')}
+                    className="glass-card"
                     style={{
-                        background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', cursor: 'pointer',
+                        padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #f59e0b', // Orange
-                        boxShadow: 'var(--shadow)',
                         opacity: filterStatus === 'Pending' ? 1 : 0.7,
-                        transition: 'all 0.2s',
-                        color: 'var(--text)',
                         position: 'relative'
                     }}
                 >
@@ -124,13 +120,11 @@ const AdminDashboard = () => {
                 {/* Successful Card */}
                 <div
                     onClick={() => setFilterStatus('Successful')}
+                    className="glass-card"
                     style={{
-                        background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', cursor: 'pointer',
+                        padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #10b981', // Green
-                        boxShadow: 'var(--shadow)',
                         opacity: filterStatus === 'Successful' ? 1 : 0.7,
-                        transition: 'all 0.2s',
-                        color: 'var(--text)',
                         position: 'relative'
                     }}
                 >
@@ -149,13 +143,11 @@ const AdminDashboard = () => {
                 {/* Failed Card */}
                 <div
                     onClick={() => setFilterStatus('Failed')}
+                    className="glass-card"
                     style={{
-                        background: 'var(--surface)', padding: '1.5rem', borderRadius: '12px', cursor: 'pointer',
+                        padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #ef4444', // Red
-                        boxShadow: 'var(--shadow)',
                         opacity: filterStatus === 'Failed' ? 1 : 0.7,
-                        transition: 'all 0.2s',
-                        color: 'var(--text)',
                         position: 'relative'
                     }}
                 >
@@ -173,10 +165,11 @@ const AdminDashboard = () => {
             </div>
 
             {/* RECENT ACTIVITY WIDGET */}
-            <div className="card" style={{ marginBottom: '2rem', padding: '0', overflow: 'hidden' }}>
+            <div className="glass-card" style={{ marginBottom: '2rem', padding: '0', overflow: 'hidden' }}>
                 <div style={{
                     padding: '1.5rem',
-                    background: 'var(--bg)',
+                    background: 'rgba(255, 255, 255, 0.4)',
+                    backdropFilter: 'blur(8px)',
                     borderBottom: '1px solid var(--border)'
                 }}>
                     <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text)' }}>{t('recent_activity')}</h3>
@@ -633,7 +626,7 @@ const AdminDashboard = () => {
                 </h2>
 
                 {/* Filter Controls */}
-                <div className="card" style={{ marginBottom: '2rem', background: 'var(--surface)', border: '1px solid var(--border)' }}>
+                <div className="glass-card" style={{ marginBottom: '2rem' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
                         <div>
                             <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>AREA / ZONE</label>
@@ -641,7 +634,7 @@ const AdminDashboard = () => {
                                 value={selectedZone}
                                 onChange={(e) => setSelectedZone(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
                             >
                                 <option value="All">All Zones</option>
                                 <option value="North Zone">North Zone</option>
@@ -656,7 +649,7 @@ const AdminDashboard = () => {
                                 value={selectedCategory}
                                 onChange={(e) => setSelectedCategory(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
                             >
                                 <option value="All">All Categories</option>
                                 <option value="Roads">Roads</option>
@@ -673,7 +666,7 @@ const AdminDashboard = () => {
                                 value={selectedTimePeriod}
                                 onChange={(e) => setSelectedTimePeriod(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'var(--bg)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
                             >
                                 <option value="All">All Time</option>
                                 <option value="Today">Today</option>

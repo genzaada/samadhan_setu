@@ -50,7 +50,7 @@ const NearbyIssues = () => {
     });
 
     return (
-        <div className="container fade-in" style={{ height: 'calc(100vh - 80px)', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
+        <div className="container fade-in" style={{ height: 'calc(100vh - 80px)', padding: '1rem', display: 'flex', flexDirection: 'column', color: 'white' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <button className="btn btn-ghost" onClick={() => navigate('/citizen')}>
                     <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back

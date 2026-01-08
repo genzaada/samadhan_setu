@@ -286,10 +286,10 @@ const ReportIssue = () => {
                 }
             `}</style>
 
-            <button className="btn btn-ghost" onClick={() => setStep(1)} style={{ marginBottom: '1rem' }}>
+            <button className="btn btn-ghost" onClick={() => setStep(1)} style={{ marginBottom: '1rem', color: 'white' }}>
                 <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back to Categories
             </button>
-            <div className="card">
+            <div className="glass-card-dark">
                 <h2 style={{ marginBottom: '1.5rem' }}>Report: {selectedCategory}</h2>
                 <form onSubmit={handleSubmit} className="grid grid-cols-1">
                     <select
@@ -322,10 +322,10 @@ const ReportIssue = () => {
                     ></textarea>
 
                     {/* Enhanced Audio Recorder */}
-                    <div style={{ marginBottom: '1rem', padding: '1rem', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)' }}>
-                        <label style={{ display: 'block', marginBottom: '0.75rem', fontWeight: 600 }}>Voice Description (Optional)</label>
+                    <div style={{ marginBottom: '1rem', padding: '1rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: 'var(--radius)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <label style={{ display: 'block', marginBottom: '0.75rem', fontWeight: 600, color: 'white' }}>Voice Description (Optional)</label>
 
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', background: 'var(--bg)', padding: '0.75rem', borderRadius: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', background: 'rgba(0, 0, 0, 0.2)', padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
                             {!recording && (
                                 <select
                                     value={voiceLang}
@@ -333,11 +333,12 @@ const ReportIssue = () => {
                                     style={{
                                         padding: '0.5rem',
                                         borderRadius: '6px',
-                                        border: '1px solid var(--border)',
+                                        border: '1px solid rgba(255, 255, 255, 0.2)',
                                         fontSize: '0.85rem',
-                                        background: 'var(--surface)',
-                                        color: 'var(--text)',
-                                        cursor: 'pointer'
+                                        background: 'rgba(255, 255, 255, 0.1)',
+                                        color: 'white',
+                                        cursor: 'pointer',
+                                        outline: 'none'
                                     }}
                                 >
                                     <option value="en-US">English</option>
@@ -351,16 +352,16 @@ const ReportIssue = () => {
                             {/* Controls */}
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: recording ? 'flex-start' : 'flex-end' }}>
                                 {!recording && !audioUrl ? (
-                                    <button type="button" className="btn" onClick={startRecording} style={{ background: 'transparent', color: '#dc2626', border: '1px solid #dc2626', display: 'flex', alignItems: 'center', padding: '0.5rem 1rem' }}>
+                                    <button type="button" className="btn" onClick={startRecording} style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.3)', display: 'flex', alignItems: 'center', padding: '0.5rem 1rem' }}>
                                         <Mic size={18} style={{ marginRight: '0.5rem' }} /> Tap to Record
                                     </button>
                                 ) : recording ? (
                                     <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
                                             <div className="recording-animation"></div>
-                                            <span style={{ fontWeight: 'bold', color: '#dc2626' }}>{formatTime(recordingTime)}</span>
+                                            <span style={{ fontWeight: 'bold', color: '#ef4444' }}>{formatTime(recordingTime)}</span>
                                         </div>
-                                        <button type="button" className="btn" onClick={stopRecording} style={{ background: '#dc2626', color: 'white', borderRadius: '50%', width: '40px', height: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <button type="button" className="btn" onClick={stopRecording} style={{ background: '#ef4444', color: 'white', borderRadius: '50%', width: '40px', height: '40px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none' }}>
                                             <Square size={16} fill="white" />
                                         </button>
                                     </div>
@@ -368,7 +369,7 @@ const ReportIssue = () => {
                                     // Playback Mode
                                     <div style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '0.5rem' }}>
                                         <audio controls src={audioUrl} style={{ height: '36px', flex: 1 }} />
-                                        <button type="button" onClick={deleteRecording} style={{ background: 'transparent', border: 'none', color: '#ef4444', cursor: 'pointer', padding: '0.5rem' }}>
+                                        <button type="button" onClick={deleteRecording} style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', color: '#ef4444', cursor: 'pointer', padding: '0.5rem', borderRadius: '6px' }}>
                                             <Trash2 size={20} />
                                         </button>
                                     </div>
@@ -377,13 +378,13 @@ const ReportIssue = () => {
                         </div>
 
                         {(recording || transcript || processingVoice) && (
-                            <div style={{ marginTop: '0.5rem', padding: '0.5rem', background: 'var(--bg)', borderRadius: '8px', border: '1px solid var(--border)' }}>
+                            <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: 'rgba(0, 0, 0, 0.2)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
                                 {processingVoice ? (
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontSize: '0.9rem' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#a5b4fc', fontSize: '0.9rem' }}>
                                         <Loader2 className="animate-spin" size={14} /> Processing voice description...
                                     </div>
                                 ) : (
-                                    <p style={{ fontSize: '0.9rem', color: '#64748b', fontStyle: 'italic', margin: 0 }}>
+                                    <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.8)', fontStyle: 'italic', margin: 0 }}>
                                         {transcript || "Listening..."}
                                     </p>
                                 )}

@@ -21,11 +21,11 @@ const Feedback = () => {
     };
 
     return (
-        <div className="container fade-in">
-            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem' }}>
+        <div className="container fade-in" style={{ color: 'white' }}>
+            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem', color: 'white' }}>
                 <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back to Dashboard
             </button>
-            <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <div className="glass-card-dark" style={{ maxWidth: '600px', margin: '0 auto' }}>
                 <h2 style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Share Your Feedback</h2>
 
                 {submitted ? (

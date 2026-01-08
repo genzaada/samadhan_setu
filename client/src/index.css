@@ -11,46 +11,46 @@
   --fg: #0f172a;
   /* Slate 900 */
   --surface: #ffffff;
-  --primary: #6366f1;
-  /* Indigo 500 */
-  --primary-hover: #4f46e5;
-  --text-muted: #64748b;
-  /* Slate 500 */
-  --border: #e2e8f0;
-  /* Slate 200 */
+  /* Brand Colors */
+  --brand-green: #155d48;
+  --brand-green-light: #e6f0eb;
+
+  /* Redefine Primary to Brand Green */
+  --primary: var(--brand-green);
+  --primary-hover: #0f4031;
 
   /* Mapping to App Variables */
-  --background: var(--bg);
+  --background: #f8fafc;
+  /* Solid Light BG */
   --text: var(--fg);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  /* Softer, wider shadow */
 
   /* Transition Settings */
   --trans-dur: 0.4s;
   --trans-timing: cubic-bezier(0.83, 0, 0.17, 1);
 
   /* Other Variables */
-  --radius: 0.75rem;
+  --radius: 1.5rem;
+  /* 24px global radius */
   --secondary: #ec4899;
   --danger: #ef4444;
   --success: #22c55e;
   --warning: #f59e0b;
 }
 
-/* Dark Mode Overrides - Using data-theme attribute for robustness */
+/* Dark Mode Overrides */
 :root[data-theme="dark"] {
   --bg: #0f172a;
-  /* Slate 900 */
   --fg: #f1f5f9;
-  /* Slate 100 */
   --surface: #1e293b;
-  /* Slate 800 */
-  --primary: #818cf8;
-  /* Indigo 400 */
-  --primary-hover: #6366f1;
+  --primary: #4ade80;
+  /* Lighter green for dark mode */
+  --primary-hover: #22c55e;
   --text-muted: #94a3b8;
-  /* Slate 400 */
   --border: #334155;
-  /* Slate 700 */
+  --brand-green: #4ade80;
+  --brand-green-light: #1e293b;
 
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
 }
@@ -83,7 +83,8 @@ a {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
+  /* Wider container for desktop */
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -104,14 +105,14 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  background: var(--brand-green);
   color: white;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 12px rgba(21, 93, 72, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 6px 16px rgba(21, 93, 72, 0.3);
 }
 
 .btn-secondary {
@@ -131,6 +132,67 @@ a {
   padding: 1.5rem;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+}
+
+/* REDEFINED: Glass Card -> Clean Card (Solid White, Rounded) */
+/* Glass Card - Translucent & Blurred */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.glass-card-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  /* Modern curve */
+  padding: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  /* Deep glass shadow */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Smoother bounce */
+}
+
+.glass-card-dark .input,
+.glass-card-dark select,
+.glass-card-dark textarea,
+.glass-card-dark button.btn-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card-dark .input::placeholder,
+.glass-card-dark textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.glass-card-dark option {
+  background: #1e293b;
+  /* Fallback for select options */
+  color: white;
+}
+
+:root[data-theme="dark"] .glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+transition: all 0.2s ease;
+}
+
+:root[data-theme="dark"] .glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
 .input {

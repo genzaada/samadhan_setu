@@ -8,11 +8,11 @@ const Profile = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="container fade-in">
-            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem' }}>
+        <div className="container fade-in" style={{ color: 'white' }}>
+            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem', color: 'white' }}>
                 <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back to Dashboard
             </button>
-            <div className="card">
+            <div className="glass-card-dark">
                 <h1>Profile</h1>
                 <p><strong>Name:</strong> {user?.name}</p>
                 <p><strong>Email:</strong> {user?.email}</p>

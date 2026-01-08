@@ -24,8 +24,8 @@ const MyReports = () => {
     };
 
     return (
-        <div className="container fade-in">
-            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem' }}>
+        <div className="container fade-in" style={{ color: 'white' }}>
+            <button className="btn btn-ghost" onClick={() => navigate('/citizen')} style={{ marginBottom: '1rem', color: 'white' }}>
                 <ArrowLeft size={20} style={{ marginRight: '0.5rem' }} /> Back to Dashboard
             </button>
             <h1 style={{ marginBottom: '1.5rem' }}>My Reports</h1>
@@ -33,7 +33,7 @@ const MyReports = () => {
             {loading ? <div style={{ textAlign: 'center' }}>Loading...</div> : (
                 <div className="grid grid-cols-1">
                     {issues.map(issue => (
-                        <div key={issue._id} className="card">
+                        <div key={issue._id} className="glass-card-dark">
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                                 <h3 style={{ fontSize: '1.2rem', fontWeight: 600 }}>{issue.title}</h3>
                                 <span className={`badge badge-${issue.status.toLowerCase().replace(' ', '-')}`}>{issue.status}</span>
