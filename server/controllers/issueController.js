@@ -84,11 +84,18 @@ exports.assignIssue = async (req, res) => {
         const { issueId } = req.params;
         const { workerId } = req.body;
 
+        logToFile(`[assignIssue] Request. Issue: ${issueId}, Worker: ${workerId}, AssignedBy: ${req.user.id}`);
+
         const issue = await Issue.findByIdAndUpdate(
             issueId,
             { assignedTo: workerId, status: 'In Progress' },
             { new: true }
         );
+
+        if (!issue) {
+            logToFile(`[assignIssue] Issue not found: ${issueId}`);
+            return res.status(404).json({ message: 'Issue not found' });
+        }
 
         // Add history
         issue.status_history.push({
@@ -98,8 +105,10 @@ exports.assignIssue = async (req, res) => {
         });
         await issue.save();
 
+        logToFile(`[assignIssue] Success. Issue: ${issueId}`);
         res.json(issue);
     } catch (error) {
+        logToFile(`[assignIssue] Error: ${error.message}`);
         res.status(500).json({ message: 'Error assigning issue', error: error.message });
     }
 };
@@ -109,8 +118,15 @@ exports.resolveIssue = async (req, res) => {
         const { issueId } = req.params;
         const { proofImage, remark } = req.body;
 
+        logToFile(`[resolveIssue] Request. Issue: ${issueId}, User: ${req.user.id}`);
+        logToFile(`[resolveIssue] Body Keys: ${Object.keys(req.body).join(', ')}`);
+        logToFile(`[resolveIssue] Remark: "${remark}", ImageLength: ${proofImage ? proofImage.length : 'N/A'}`);
+
         const issue = await Issue.findById(issueId);
-        if (!issue) return res.status(404).json({ message: 'Issue not found' });
+        if (!issue) {
+            logToFile(`[resolveIssue] Issue not found: ${issueId}`);
+            return res.status(404).json({ message: 'Issue not found' });
+        }
 
         issue.status = 'Pending Verification';
 
@@ -120,7 +136,7 @@ exports.resolveIssue = async (req, res) => {
             issue.ai_feedback = feedback;
         } catch (aiError) {
             console.error("AI Feedback skipped in controller:", aiError);
-            require('fs').appendFileSync('debug_error.log', `AI Error: ${aiError.message}\n`);
+            logToFile(`[resolveIssue] AI Error: ${aiError.message}`);
         }
 
         issue.status_history.push({
@@ -131,9 +147,10 @@ exports.resolveIssue = async (req, res) => {
         });
 
         await issue.save();
+        logToFile(`[resolveIssue] Success. Saved status history.`);
         res.json(issue);
     } catch (error) {
-        require('fs').appendFileSync('debug_error.log', `Resolve Error: ${error.message}\nStack: ${error.stack}\n`);
+        logToFile(`[resolveIssue] Error: ${error.message}`);
         res.status(500).json({ message: 'Error resolving issue', error: error.message });
     }
 };

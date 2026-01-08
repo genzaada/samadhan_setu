@@ -29,9 +29,10 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
-        console.log('MongoDB connected (Local)');
+        console.log('MongoDB connected (Cloud)');
     } catch (err) {
-        console.log('Local MongoDB failed, starting in-memory database...');
+        console.error('Cloud MongoDB failed:', err.message);
+        console.log('Starting in-memory database...');
         const mongod = await MongoMemoryServer.create();
         const uri = mongod.getUri();
         await mongoose.connect(uri);

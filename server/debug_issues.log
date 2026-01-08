@@ -104,3 +104,211 @@
 [2026-01-08T06:58:27.683Z] [getIssues] Found 0 issues.
 [2026-01-08T06:58:37.770Z] [getIssues] Fetching for User: 695f54de47dfe34613cd5615 (admin), Query: {}
 [2026-01-08T06:58:37.777Z] [getIssues] Found 1 issues.
+[2026-01-08T07:19:04.648Z] [getIssues] Fetching for User: 695f556c47dfe34613cd562c (worker), Query: {"assignedTo":"695f556c47dfe34613cd562c"}
+[2026-01-08T07:19:04.651Z] [getIssues] Found 0 issues.
+[2026-01-08T07:51:18.693Z] [getIssues] Fetching for User: 695f61f375f726a2be16c995 (admin), Query: {}
+[2026-01-08T07:51:18.695Z] [getIssues] Found 0 issues.
+[2026-01-08T08:03:07.675Z] [getIssues] Fetching for User: 695f64b6bf6f8e825c4df647 (admin), Query: {}
+[2026-01-08T08:03:07.677Z] [getIssues] Found 0 issues.
+[2026-01-08T08:04:57.676Z] [getIssues] Fetching for User: 695f64f4bf6f8e825c4df64f (citizen), Query: {"reportedBy":"695f64f4bf6f8e825c4df64f"}
+[2026-01-08T08:04:57.678Z] [getIssues] Found 0 issues.
+[2026-01-08T08:05:00.169Z] [getIssues] Fetching for User: 695f64f4bf6f8e825c4df64f (citizen), Query: {"reportedBy":"695f64f4bf6f8e825c4df64f"}
+[2026-01-08T08:05:00.171Z] [getIssues] Found 0 issues.
+[2026-01-08T08:05:00.193Z] [getIssues] Fetching for User: 695f64f4bf6f8e825c4df64f (citizen), Query: {"reportedBy":"695f64f4bf6f8e825c4df64f"}
+[2026-01-08T08:05:00.195Z] [getIssues] Found 0 issues.
+[2026-01-08T08:05:54.023Z] [createIssue] Request received. Title: roads and pothhole, User: 695f64f4bf6f8e825c4df64f
+[2026-01-08T08:05:54.036Z] [createIssue] SUCCESS. IssueID: 695f6562bf6f8e825c4df65b, ReportedBy: 695f64f4bf6f8e825c4df64f
+[2026-01-08T08:07:23.334Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:07:23.336Z] [getIssues] Found 0 issues.
+[2026-01-08T08:07:47.171Z] [getIssues] Fetching for User: 695f64b6bf6f8e825c4df647 (admin), Query: {}
+[2026-01-08T08:07:47.177Z] [getIssues] Found 1 issues.
+[2026-01-08T08:07:50.679Z] [assignIssue] Request. Issue: 695f6562bf6f8e825c4df65b, Worker: 695f6584bf6f8e825c4df65e, AssignedBy: 695f64b6bf6f8e825c4df647
+[2026-01-08T08:07:50.692Z] [assignIssue] Success. Issue: 695f6562bf6f8e825c4df65b
+[2026-01-08T08:07:50.722Z] [getIssues] Fetching for User: 695f64b6bf6f8e825c4df647 (admin), Query: {}
+[2026-01-08T08:07:50.726Z] [getIssues] Found 1 issues.
+[2026-01-08T08:08:10.372Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:08:10.379Z] [getIssues] Found 1 issues.
+[2026-01-08T08:18:16.098Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:18:16.147Z] [getIssues] Found 1 issues.
+[2026-01-08T08:18:16.201Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:18:16.243Z] [getIssues] Found 1 issues.
+[2026-01-08T08:23:33.656Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:23:33.703Z] [getIssues] Found 1 issues.
+[2026-01-08T08:23:37.408Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:23:37.463Z] [getIssues] Found 1 issues.
+[2026-01-08T08:23:37.605Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:23:37.648Z] [getIssues] Found 1 issues.
+[2026-01-08T08:36:24.507Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:36:24.562Z] [getIssues] Found 1 issues.
+[2026-01-08T08:36:40.881Z] [getIssues] Fetching for User: 695f64b6bf6f8e825c4df647 (admin), Query: {}
+[2026-01-08T08:36:40.927Z] [getIssues] Found 1 issues.
+[2026-01-08T08:36:45.511Z] [assignIssue] Request. Issue: 695f6562bf6f8e825c4df65b, Worker: 695f6584bf6f8e825c4df65e, AssignedBy: 695f64b6bf6f8e825c4df647
+[2026-01-08T08:36:45.658Z] [assignIssue] Success. Issue: 695f6562bf6f8e825c4df65b
+[2026-01-08T08:36:45.752Z] [getIssues] Fetching for User: 695f64b6bf6f8e825c4df647 (admin), Query: {}
+[2026-01-08T08:36:45.795Z] [getIssues] Found 1 issues.
+[2026-01-08T08:37:00.125Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:37:00.182Z] [getIssues] Found 1 issues.
+[2026-01-08T08:42:55.981Z] [getIssues] Fetching for User: 695f6584bf6f8e825c4df65e (worker), Query: {"assignedTo":"695f6584bf6f8e825c4df65e"}
+[2026-01-08T08:42:56.029Z] [getIssues] Found 1 issues.
+[2026-01-08T08:50:02.613Z] [getIssues] Fetching for User: 695f6fb662d3c49bae9cb889 (admin), Query: {}
+[2026-01-08T08:50:02.615Z] [getIssues] Found 0 issues.
+[2026-01-08T08:51:07.671Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T08:51:07.674Z] [getIssues] Found 0 issues.
+[2026-01-08T08:53:41.522Z] [createIssue] Request received. Title: electricity not been here since 3 hours, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:53:41.539Z] [createIssue] SUCCESS. IssueID: 695f709562d3c49bae9cb89b, ReportedBy: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:53:52.329Z] [getIssues] Fetching for User: 695f6fb662d3c49bae9cb889 (admin), Query: {}
+[2026-01-08T08:53:52.342Z] [getIssues] Found 1 issues.
+[2026-01-08T08:53:56.687Z] [assignIssue] Request. Issue: 695f709562d3c49bae9cb89b, Worker: 695f6ff562d3c49bae9cb895, AssignedBy: 695f6fb662d3c49bae9cb889
+[2026-01-08T08:53:56.717Z] [assignIssue] Success. Issue: 695f709562d3c49bae9cb89b
+[2026-01-08T08:53:56.764Z] [getIssues] Fetching for User: 695f6fb662d3c49bae9cb889 (admin), Query: {}
+[2026-01-08T08:53:56.775Z] [getIssues] Found 1 issues.
+[2026-01-08T08:54:11.014Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T08:54:11.027Z] [getIssues] Found 1 issues.
+[2026-01-08T08:54:21.070Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:54:21.070Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T08:54:21.070Z] [resolveIssue] Remark: "", ImageLength: 4745610
+[2026-01-08T08:54:29.845Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:54:29.845Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T08:54:29.846Z] [resolveIssue] Remark: "", ImageLength: 4745610
+[2026-01-08T08:54:30.891Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:54:30.891Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T08:54:30.891Z] [resolveIssue] Remark: "", ImageLength: 4745610
+[2026-01-08T08:54:31.545Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:54:31.545Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T08:54:31.545Z] [resolveIssue] Remark: "", ImageLength: 4745610
+[2026-01-08T08:54:32.089Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T08:54:32.089Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T08:54:32.089Z] [resolveIssue] Remark: "", ImageLength: 4745610
+[2026-01-08T08:56:49.695Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T08:56:49.758Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T08:56:49.838Z] [getIssues] Found 1 issues.
+[2026-01-08T08:57:12.867Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T08:57:12.937Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T08:57:12.976Z] [getIssues] Found 1 issues.
+[2026-01-08T08:57:13.530Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T08:57:13.591Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T08:57:13.643Z] [getIssues] Found 1 issues.
+[2026-01-08T08:57:15.306Z] [resolveIssue] Error: BSONObj size: 20870392 (0x13E74F8) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T08:57:34.549Z] [resolveIssue] Error: BSONObj size: 20870392 (0x13E74F8) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:04:04.501Z] [getIssues] Fetching for User: 695f6ff562d3c49bae9cb895 (worker), Query: {"assignedTo":"695f6ff562d3c49bae9cb895"}
+[2026-01-08T09:04:04.560Z] [getIssues] Found 1 issues.
+[2026-01-08T09:05:40.046Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:40.047Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:40.047Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:05:40.915Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:40.916Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:40.916Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:05:41.085Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:41.085Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:41.085Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:05:41.266Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:41.266Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:41.266Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:05:41.451Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:41.451Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:41.451Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:05:41.615Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:05:41.615Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:05:41.615Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:07:20.121Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:07:20.184Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f6ff562d3c49bae9cb895
+[2026-01-08T09:07:20.184Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:07:20.184Z] [resolveIssue] Remark: "", ImageLength: 100699
+[2026-01-08T09:07:20.291Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:07:20.401Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:07:28.695Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:07:48.187Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:07:48.337Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:09:22.384Z] [resolveIssue] Error: BSONObj size: 16830456 (0x100CFF8) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:14:40.409Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:14:40.412Z] [getIssues] Found 0 issues.
+[2026-01-08T09:16:13.934Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:16:13.996Z] [getIssues] Found 1 issues.
+[2026-01-08T09:16:23.169Z] [assignIssue] Request. Issue: 695f709562d3c49bae9cb89b, Worker: 695f756d62d3c49bae9cb928, AssignedBy: 695f75c262d3c49bae9cb931
+[2026-01-08T09:16:23.314Z] [assignIssue] Success. Issue: 695f709562d3c49bae9cb89b
+[2026-01-08T09:16:23.419Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:16:23.468Z] [getIssues] Found 1 issues.
+[2026-01-08T09:16:55.634Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:16:55.695Z] [getIssues] Found 1 issues.
+[2026-01-08T09:17:14.215Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:17:14.216Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:17:14.216Z] [resolveIssue] Remark: "done", ImageLength: 10274918
+[2026-01-08T09:17:16.204Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:17:16.205Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:17:16.205Z] [resolveIssue] Remark: "done", ImageLength: 10274918
+[2026-01-08T09:18:47.057Z] [resolveIssue] Error: BSONObj size: 27004808 (0x19C0F88) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:18:50.916Z] [resolveIssue] Error: BSONObj size: 27004808 (0x19C0F88) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:24:47.643Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:24:47.708Z] [getIssues] Found 1 issues.
+[2026-01-08T09:26:59.971Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:27:00.033Z] [getIssues] Found 1 issues.
+[2026-01-08T09:27:30.906Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:27:30.907Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:27:30.907Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:27:35.173Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:27:35.173Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:27:35.173Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:28:00.932Z] [resolveIssue] Request. Issue: 695f709562d3c49bae9cb89b, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:28:00.934Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:28:00.935Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:29:08.937Z] [resolveIssue] Error: BSONObj size: 16827901 (0x100C5FD) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:29:45.119Z] [resolveIssue] Error: BSONObj size: 16827901 (0x100C5FD) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:29:46.054Z] [resolveIssue] Error: BSONObj size: 16827901 (0x100C5FD) is invalid. Size must be between 0 and 16793600(16MB) First element: _id: ObjectId('695f709562d3c49bae9cb89b')
+[2026-01-08T09:39:13.531Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:39:13.597Z] [getIssues] Found 1 issues.
+[2026-01-08T09:39:38.437Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:39:38.498Z] [getIssues] Found 1 issues.
+[2026-01-08T09:40:59.557Z] [createIssue] Request received. Title: Street lighting not working, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:40:59.564Z] [createIssue] SUCCESS. IssueID: 695f7bab62d3c49bae9cba05, ReportedBy: 695f756d62d3c49bae9cb928
+[2026-01-08T09:41:33.606Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:41:33.663Z] [getIssues] Found 2 issues.
+[2026-01-08T09:41:41.490Z] [assignIssue] Request. Issue: 695f7bab62d3c49bae9cba05, Worker: 695f756d62d3c49bae9cb928, AssignedBy: 695f75c262d3c49bae9cb931
+[2026-01-08T09:41:41.500Z] [assignIssue] Success. Issue: 695f7bab62d3c49bae9cba05
+[2026-01-08T09:41:41.543Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:41:41.604Z] [getIssues] Found 2 issues.
+[2026-01-08T09:42:41.961Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:42:42.019Z] [getIssues] Found 2 issues.
+[2026-01-08T09:42:57.887Z] [resolveIssue] Request. Issue: 695f7bab62d3c49bae9cba05, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:42:57.887Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:42:57.887Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:43:00.546Z] [resolveIssue] Request. Issue: 695f7bab62d3c49bae9cba05, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:43:00.546Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:43:00.547Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:43:58.529Z] [resolveIssue] Request. Issue: 695f7bab62d3c49bae9cba05, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:43:58.530Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:43:58.530Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:44:27.408Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:44:27.472Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:44:27.584Z] [getIssues] Found 2 issues.
+[2026-01-08T09:44:29.637Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:44:29.695Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:44:29.754Z] [getIssues] Found 2 issues.
+[2026-01-08T09:45:02.279Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:45:02.336Z] [getIssues] Found 2 issues.
+[2026-01-08T09:45:30.758Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:45:30.870Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:45:30.918Z] [getIssues] Found 2 issues.
+[2026-01-08T09:45:52.817Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:45:52.878Z] [getIssues] Found 2 issues.
+[2026-01-08T09:47:58.538Z] [createIssue] Request received. Title: Public transportation, User: 695f75c262d3c49bae9cb931
+[2026-01-08T09:47:58.545Z] [createIssue] SUCCESS. IssueID: 695f7d4e62d3c49bae9cbabb, ReportedBy: 695f75c262d3c49bae9cb931
+[2026-01-08T09:48:11.399Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:48:11.460Z] [getIssues] Found 3 issues.
+[2026-01-08T09:48:33.341Z] [assignIssue] Request. Issue: 695f7d4e62d3c49bae9cbabb, Worker: 695f756d62d3c49bae9cb928, AssignedBy: 695f75c262d3c49bae9cb931
+[2026-01-08T09:48:33.349Z] [assignIssue] Success. Issue: 695f7d4e62d3c49bae9cbabb
+[2026-01-08T09:48:33.393Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:48:33.455Z] [getIssues] Found 3 issues.
+[2026-01-08T09:49:05.312Z] [getIssues] Fetching for User: 695f756d62d3c49bae9cb928 (worker), Query: {"assignedTo":"695f756d62d3c49bae9cb928"}
+[2026-01-08T09:49:05.373Z] [getIssues] Found 3 issues.
+[2026-01-08T09:49:20.409Z] [resolveIssue] Request. Issue: 695f7d4e62d3c49bae9cbabb, User: 695f756d62d3c49bae9cb928
+[2026-01-08T09:49:20.409Z] [resolveIssue] Body Keys: remark, proofImage
+[2026-01-08T09:49:20.409Z] [resolveIssue] Remark: "done", ImageLength: 98011
+[2026-01-08T09:50:22.845Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:50:22.900Z] [getIssues] Found 3 issues.
+[2026-01-08T09:50:40.548Z] [resolveIssue] Success. Saved status history.
+[2026-01-08T09:51:35.689Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:51:35.752Z] [getIssues] Found 3 issues.
+[2026-01-08T09:53:06.283Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:53:06.342Z] [getIssues] Found 3 issues.
+[2026-01-08T09:53:19.517Z] [getIssues] Fetching for User: 695f75c262d3c49bae9cb931 (admin), Query: {}
+[2026-01-08T09:53:19.578Z] [getIssues] Found 3 issues.

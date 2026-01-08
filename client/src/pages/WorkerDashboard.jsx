@@ -8,6 +8,22 @@ import {
 import ImageUpload from '../components/ImageUpload';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix for default marker icon in Leaflet React
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 const WorkerDashboard = () => {
     const { t } = useLanguage();
@@ -33,23 +49,53 @@ const WorkerDashboard = () => {
         }
     };
 
+    // Checklist State
+    const checklistItems = ['Wear high-visibility vest', 'Watch for sharp objects', 'Keep a safe distance from traffic'];
+    const [checkedItems, setCheckedItems] = useState({});
+
+    useEffect(() => {
+        // Reset checklist when issue changes
+        setCheckedItems({});
+    }, [selectedIssue]);
+
+    const handleCheck = (item) => {
+        setCheckedItems(prev => ({ ...prev, [item]: !prev[item] }));
+    };
+
+    const isTaskComplete = () => {
+        const allChecked = checklistItems.every(item => checkedItems[item]);
+        const hasRemark = resolutionData.remark.trim().length > 0;
+        const hasImage = !!resolutionData.proofImage;
+        return allChecked && hasRemark && hasImage;
+    };
+
     const handleResolveSubmit = async (e) => {
         e.preventDefault();
+        if (!isTaskComplete()) return;
+
         try {
             await resolveIssue(selectedIssue._id, resolutionData);
             setResolutionData({ remark: '', proofImage: '' });
+            setCheckedItems({});
             fetchData();
             const currentIndex = issues.findIndex(i => i._id === selectedIssue._id);
             if (currentIndex < issues.length - 1) {
                 setSelectedIssue(issues[currentIndex + 1]);
             }
         } catch (error) {
-            alert('Failed to resolve');
+            console.error(error);
+            alert(error.response?.data?.message || 'Failed to resolve. Please try refreshing or logging in again.');
         }
     };
 
     return (
         <div style={{ display: 'flex', height: '100vh', fontFamily: 'Inter, sans-serif', padding: '1.5rem', gap: '1.5rem' }}>
+            {/* ... (Sidebar and Header code remains same - omitted for brevity in replace tool, but included in logic) ... */}
+            {/* I will focus this edit on the specific sections within the render to avoid massive replacement */}
+            {/* Actually, the tool requires contiguous block. I'll split this into: 1. State/Handlers 2. Checklist UI 3. Submit Button */}
+
+            {/* RE-STRATEGIZING TO USE MULTI-REPLACE PRECISELY */}
+
             {/* SIDEBAR - Floating Glass Island */}
             <aside style={{
                 width: '18vw',
@@ -247,16 +293,55 @@ const WorkerDashboard = () => {
                         ) : (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                 {/* "Map" Placeholder */}
-                                <div style={{ background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.1)', overflow: 'hidden', flex: 1, position: 'relative' }}>
-                                    <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                {/* Live Map Implementation */}
+                                <div style={{ background: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)', borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.1)', overflow: 'hidden', flex: 1, position: 'relative', display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ padding: '1rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', display: 'flex', alignItems: 'center', gap: '0.5rem', zIndex: 401, position: 'relative', background: 'rgba(0,0,0,0.5)' }}>
                                         <MapPin size={18} color="#4ade80" />
                                         <span style={{ fontWeight: '600', color: 'white' }}>Live task map</span>
                                     </div>
-                                    <div style={{ height: '300px', background: 'rgba(0, 0, 0, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <div style={{ textAlign: 'center', color: 'rgba(255, 255, 255, 0.5)' }}>
-                                            <MapIcon size={48} style={{ margin: '0 auto 1rem', opacity: 0.5 }} />
-                                            <p>Map Visualization</p>
-                                        </div>
+                                    <div style={{ flex: 1, width: '100%', minHeight: '300px' }}>
+                                        <MapContainer center={[28.6139, 77.2090]} zoom={11} style={{ height: '100%', width: '100%' }}>
+                                            <TileLayer
+                                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            />
+                                            {issues.map((issue) => (
+                                                issue.location && issue.location.lat && (
+                                                    <Marker
+                                                        key={issue._id}
+                                                        position={[issue.location.lat, issue.location.lng]}
+                                                        eventHandlers={{
+                                                            click: () => {
+                                                                setSelectedIssue(issue);
+                                                            },
+                                                        }}
+                                                    >
+                                                        <Popup>
+                                                            <div style={{ minWidth: '150px' }}>
+                                                                <strong style={{ display: 'block', fontSize: '1.1em', marginBottom: '5px' }}>{issue.title}</strong>
+                                                                <span style={{
+                                                                    display: 'inline-block',
+                                                                    padding: '2px 6px',
+                                                                    borderRadius: '4px',
+                                                                    fontSize: '0.8em',
+                                                                    background: '#f3f4f6',
+                                                                    marginBottom: '5px'
+                                                                }}>
+                                                                    {issue.category || 'Issue'}
+                                                                </span>
+                                                                <p style={{
+                                                                    fontWeight: 'bold',
+                                                                    color: issue.status === 'Resolved' ? '#16a34a' : '#dc2626',
+                                                                    margin: '5px 0'
+                                                                }}>
+                                                                    {issue.status}
+                                                                </p>
+                                                            </div>
+                                                        </Popup>
+                                                    </Marker>
+                                                )
+                                            ))}
+                                        </MapContainer>
                                     </div>
                                 </div>
 
@@ -353,9 +438,14 @@ const WorkerDashboard = () => {
                                             <h3 style={{ margin: 0, fontSize: '1rem', fontWeight: '700', color: 'white' }}>Safety Checklist</h3>
                                         </div>
                                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                                            {['Wear high-visibility vest', 'Watch for sharp objects', 'Keep a safe distance from traffic'].map((item, i) => (
+                                            {checklistItems.map((item, i) => (
                                                 <label key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-                                                    <input type="checkbox" style={{ width: '18px', height: '18px', accentColor: '#4ade80' }} />
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={!!checkedItems[item]}
+                                                        onChange={() => handleCheck(item)}
+                                                        style={{ width: '18px', height: '18px', accentColor: '#4ade80' }}
+                                                    />
                                                     {item}
                                                 </label>
                                             ))}
@@ -373,11 +463,13 @@ const WorkerDashboard = () => {
                                                 style={{
                                                     padding: '1.5rem', border: '1px dashed rgba(255, 255, 255, 0.3)', borderRadius: '16px',
                                                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
-                                                    background: 'rgba(255, 255, 255, 0.05)', cursor: 'pointer', color: 'rgba(255, 255, 255, 0.6)'
+                                                    background: 'rgba(255, 255, 255, 0.05)', cursor: 'default', color: 'rgba(255, 255, 255, 0.6)'
                                                 }}
                                             >
                                                 <Upload size={24} />
-                                                <span style={{ fontSize: '0.8rem', fontWeight: '600' }}>Upload before (0)</span>
+                                                <span style={{ fontSize: '0.8rem', fontWeight: '600' }}>
+                                                    Report Photos ({selectedIssue.images ? selectedIssue.images.length : 0})
+                                                </span>
                                             </button>
 
                                             <div style={{ position: 'relative' }}>
@@ -419,18 +511,20 @@ const WorkerDashboard = () => {
                                     {/* Start Task Button */}
                                     <button
                                         onClick={handleResolveSubmit}
+                                        disabled={!isTaskComplete()}
                                         style={{
                                             width: '100%', padding: '1rem',
-                                            background: 'linear-gradient(135deg, #22c55e, #16a34a)', // Green Gradient
-                                            color: 'white',
+                                            background: isTaskComplete() ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'rgba(255,255,255,0.1)',
+                                            color: isTaskComplete() ? 'white' : 'rgba(255,255,255,0.3)',
                                             border: 'none', borderRadius: '16px',
                                             fontSize: '1rem', fontWeight: '700',
-                                            cursor: 'pointer',
+                                            cursor: isTaskComplete() ? 'pointer' : 'not-allowed',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                                            boxShadow: '0 4px 12px rgba(34, 197, 94, 0.4)'
+                                            boxShadow: isTaskComplete() ? '0 4px 12px rgba(34, 197, 94, 0.4)' : 'none',
+                                            transition: 'all 0.3s ease'
                                         }}
                                     >
-                                        <Play size={18} fill="white" /> Complete Task
+                                        <Play size={18} fill={isTaskComplete() ? "white" : "rgba(255,255,255,0.3)"} /> Complete Task
                                     </button>
                                 </div>
                             </div>
