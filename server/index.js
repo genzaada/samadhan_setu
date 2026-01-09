@@ -42,21 +42,23 @@ const connectDB = async () => {
 
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
-    app.use('/api/auth', authRoutes);
-    app.use('/api/issues', issueRoutes);
-    app.use('/api/feedback', require('./routes/feedbackRoutes'));
-    app.use('/api/ai', aiRoutes);
-    app.use('/api/admin/ai', adminAiRoutes);
+// Connect to Database
+connectDB().catch(err => console.error("Database connection error:", err));
 
-    app.get('/', (req, res) => {
-        res.send('Server is running');
-    });
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/issues', issueRoutes);
+app.use('/api/feedback', require('./routes/feedbackRoutes'));
+app.use('/api/ai', aiRoutes);
+app.use('/api/admin/ai', adminAiRoutes);
 
-    // Only listen if run directly (not on Vercel)
-    if (require.main === module) {
-        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-    }
+app.get('/', (req, res) => {
+    res.send('Server is running');
 });
+
+// Only listen if run directly (not on Vercel)
+if (require.main === module) {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 module.exports = app;
