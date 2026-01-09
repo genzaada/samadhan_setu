@@ -48,5 +48,15 @@ connectDB().then(() => {
     app.use('/api/feedback', require('./routes/feedbackRoutes'));
     app.use('/api/ai', aiRoutes);
     app.use('/api/admin/ai', adminAiRoutes);
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+    app.get('/', (req, res) => {
+        res.send('Server is running');
+    });
+
+    // Only listen if run directly (not on Vercel)
+    if (require.main === module) {
+        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    }
 });
+
+module.exports = app;
