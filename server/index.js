@@ -16,15 +16,10 @@ app.use(express.urlencoded({ limit: '500mb', extended: true }));
 
 app.use((req, res, next) => {
     const bodySize = req.body ? JSON.stringify(req.body).length : 0;
-    const log = `[${new Date().toISOString()}] ${req.method} ${req.url} | Body Size: ${bodySize}\n`;
-    require('fs').appendFileSync('debug_file.log', log);
-    console.log(log.trim());
+    const log = `[${new Date().toISOString()}] ${req.method} ${req.url} | Body Size: ${bodySize}`;
+    console.log(log);
     next();
 });
-
-
-
-const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const connectDB = async () => {
     try {
@@ -32,11 +27,8 @@ const connectDB = async () => {
         console.log('MongoDB connected (Cloud)');
     } catch (err) {
         console.error('Cloud MongoDB failed:', err.message);
-        console.log('Starting in-memory database...');
-        const mongod = await MongoMemoryServer.create();
-        const uri = mongod.getUri();
-        await mongoose.connect(uri);
-        console.log('MongoDB connected (In-Memory)');
+        // On Vercel, we simply fail if Cloud DB fails. No memory server fallback.
+        console.error('FATAL: Could not connect to MongoDB.');
     }
 };
 
