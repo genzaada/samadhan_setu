@@ -5,7 +5,7 @@ import API, { createIssue } from '../services/api';
 import CategorySelection from '../components/CategorySelection';
 import ImageUpload from '../components/ImageUpload';
 import { MapPin, Loader2, ArrowLeft, Mic, Square, Trash2, StopCircle } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -20,6 +20,15 @@ let DefaultIcon = L.icon({
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
+
+// Component to update map view when coordinates change
+const RecenterMap = ({ lat, lng }) => {
+    const map = useMap(); // Access Leaflet map instance
+    useEffect(() => {
+        map.flyTo([lat, lng], map.getZoom()); // Smoothly fly to new coords
+    }, [lat, lng, map]);
+    return null; // No visual element
+};
 
 const ReportIssue = () => {
     const { t } = useLanguage();
@@ -76,16 +85,30 @@ const ReportIssue = () => {
         }
     }, [location.state]);
 
+    // Reverse Geocoding Function (Nominatim)
+    const fetchAddress = async (lat, lng) => {
+        try {
+            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+            const data = await response.json();
+            if (data && data.display_name) {
+                setFormData(prev => ({ ...prev, location: { ...prev.location, lat, lng, address: data.display_name } }));
+            } else {
+                // Fallback if no address found
+                setFormData(prev => ({ ...prev, location: { ...prev.location, lat, lng, address: `${lat.toFixed(6)}, ${lng.toFixed(6)}` } }));
+            }
+        } catch (error) {
+            console.error("Geocoding Error:", error);
+            // Fallback on error
+            setFormData(prev => ({ ...prev, location: { ...prev.location, lat, lng, address: `${lat.toFixed(6)}, ${lng.toFixed(6)}` } }));
+        }
+    };
+
     // Map Location Marker Component
     const LocationMarker = () => {
         useMapEvents({
             click(e) {
                 const { lat, lng } = e.latlng;
-                // If address is empty or looks like coordinates, update it. Otherwise keep user's text.
-                const isCoord = /^-?\d+(\.\d+)?,\s*-?\d+(\.\d+)?$/.test(formData.location.address);
-                const newAddress = (formData.location.address === '' || isCoord) ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : formData.location.address;
-
-                setFormData(prev => ({ ...prev, location: { ...prev.location, lat, lng, address: newAddress } }));
+                fetchAddress(lat, lng);
             },
         });
 
@@ -102,13 +125,19 @@ const ReportIssue = () => {
     // Location Initialization
     useEffect(() => {
         if (navigator.geolocation && step === 2) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                // Only update if not already set (retaining user choice if they go back)
-                if (formData.location.address === '') {
-                    setFormData(prev => ({ ...prev, location: { lat: latitude, lng: longitude, address: 'Current Location' } }));
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    // Only update if not already set (retaining user choice if they go back, unless address is empty)
+                    if (formData.location.address === '' || formData.location.address === 'Current Location') {
+                        fetchAddress(latitude, longitude);
+                    }
+                },
+                (error) => {
+                    console.error("Geolocation denied or error:", error);
+                    // Default fallback or keep default state (user can manually pick)
                 }
-            });
+            );
         }
     }, [step]);
 
@@ -412,6 +441,7 @@ const ReportIssue = () => {
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
+                                <RecenterMap lat={formData.location.lat} lng={formData.location.lng} />
                                 <LocationMarker />
                             </MapContainer>
                         </div>

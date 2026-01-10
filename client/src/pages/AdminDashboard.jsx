@@ -74,20 +74,26 @@ const AdminDashboard = () => {
                 {/* Total Stats Card */}
                 <div
                     onClick={() => setFilterStatus('All')}
-                    className="glass-card"
                     style={{
                         padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #2563eb', // Blue
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '5px', // Reinforce left border
+                        borderRadius: '16px',
+                        color: 'white',
                         opacity: filterStatus === 'All' ? 1 : 0.7,
-                        position: 'relative'
+                        position: 'relative',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--text)', margin: 0 }}>{stats.total}</h2>
+                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white', margin: 0 }}>{stats.total}</h2>
                         <span style={{ color: '#2563eb' }}>📊</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
-                        <p style={{ margin: 0, color: 'var(--text-muted)', fontWeight: '500' }}>Total Reports</p>
+                        <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.7)', fontWeight: '500' }}>Total Reports</p>
                         <div style={{ transform: filterStatus === 'All' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                             <ChevronRight size={20} color="#2563eb" />
                         </div>
@@ -97,20 +103,26 @@ const AdminDashboard = () => {
                 {/* Pending Card */}
                 <div
                     onClick={() => setFilterStatus('Pending')}
-                    className="glass-card"
                     style={{
                         padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #f59e0b', // Orange
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '5px',
+                        borderRadius: '16px',
+                        color: 'white',
                         opacity: filterStatus === 'Pending' ? 1 : 0.7,
-                        position: 'relative'
+                        position: 'relative',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--text)', margin: 0 }}>{stats.pending}</h2>
+                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white', margin: 0 }}>{stats.pending}</h2>
                         <span style={{ color: '#f59e0b' }}>🕒</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
-                        <p style={{ margin: 0, color: 'var(--text-muted)', fontWeight: '500' }}>Pending</p>
+                        <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.7)', fontWeight: '500' }}>Pending</p>
                         <div style={{ transform: filterStatus === 'Pending' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                             <ChevronRight size={20} color="#f59e0b" />
                         </div>
@@ -120,20 +132,26 @@ const AdminDashboard = () => {
                 {/* Successful Card */}
                 <div
                     onClick={() => setFilterStatus('Successful')}
-                    className="glass-card"
                     style={{
                         padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #10b981', // Green
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '5px',
+                        borderRadius: '16px',
+                        color: 'white',
                         opacity: filterStatus === 'Successful' ? 1 : 0.7,
-                        position: 'relative'
+                        position: 'relative',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--text)', margin: 0 }}>{stats.successful}</h2>
+                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white', margin: 0 }}>{stats.successful}</h2>
                         <span style={{ color: '#10b981' }}>✅</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
-                        <p style={{ margin: 0, color: 'var(--text-muted)', fontWeight: '500' }}>Successful</p>
+                        <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.7)', fontWeight: '500' }}>Successful</p>
                         <div style={{ transform: filterStatus === 'Successful' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                             <ChevronRight size={20} color="#10b981" />
                         </div>
@@ -143,20 +161,26 @@ const AdminDashboard = () => {
                 {/* Failed Card */}
                 <div
                     onClick={() => setFilterStatus('Failed')}
-                    className="glass-card"
                     style={{
                         padding: '1.5rem', cursor: 'pointer',
                         borderLeft: '5px solid #ef4444', // Red
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '5px',
+                        borderRadius: '16px',
+                        color: 'white',
                         opacity: filterStatus === 'Failed' ? 1 : 0.7,
-                        position: 'relative'
+                        position: 'relative',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}
                 >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--text)', margin: 0 }}>{stats.failed}</h2>
+                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white', margin: 0 }}>{stats.failed}</h2>
                         <span style={{ color: '#ef4444' }}>❌</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
-                        <p style={{ margin: 0, color: 'var(--text-muted)', fontWeight: '500' }}>Failed</p>
+                        <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.7)', fontWeight: '500' }}>Failed</p>
                         <div style={{ transform: filterStatus === 'Failed' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                             <ChevronRight size={20} color="#ef4444" />
                         </div>
@@ -165,14 +189,21 @@ const AdminDashboard = () => {
             </div>
 
             {/* RECENT ACTIVITY WIDGET */}
-            <div className="glass-card" style={{ marginBottom: '2rem', padding: '0', overflow: 'hidden' }}>
+            <div style={{
+                marginBottom: '2rem', padding: '0', overflow: 'hidden',
+                background: 'rgba(0, 0, 0, 0.4)',
+                backdropFilter: 'blur(16px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+            }}>
                 <div style={{
                     padding: '1.5rem',
-                    background: 'rgba(255, 255, 255, 0.4)',
+                    background: 'rgba(255, 255, 255, 0.05)',
                     backdropFilter: 'blur(8px)',
-                    borderBottom: '1px solid var(--border)'
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
-                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text)' }}>{t('recent_activity')}</h3>
+                    <h3 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 'bold', color: 'white' }}>{t('recent_activity')}</h3>
                 </div>
 
                 <div style={{ padding: '0' }}>
@@ -184,14 +215,14 @@ const AdminDashboard = () => {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 padding: '1.5rem',
-                                borderBottom: idx !== 4 ? '1px solid var(--border)' : 'none',
+                                borderBottom: idx !== 4 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
                                 alignItems: 'center'
                             }}>
                                 {/* Left: Info */}
                                 <div>
-                                    <h4 style={{ margin: '0 0 0.25rem 0', color: 'var(--text)', fontSize: '1rem', fontWeight: '600' }}>{item.title}</h4>
+                                    <h4 style={{ margin: '0 0 0.25rem 0', color: 'white', fontSize: '1rem', fontWeight: '600' }}>{item.title}</h4>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                        <span style={{ fontSize: '0.875rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                                        <span style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.7)', fontStyle: 'italic' }}>
                                             {item.category === 'Cleanliness' && '🗑️ '}
                                             {item.category === 'Drainage' && '💧 '}
                                             {item.category === 'Infrastructure' && '🚧 '}
@@ -199,8 +230,8 @@ const AdminDashboard = () => {
                                             {item.category || 'General'}
                                         </span>
                                     </div>
-                                    <p style={{ margin: '0 0 0.25rem 0', color: 'var(--text-muted)', fontSize: '0.8rem' }}>Assigned to: {item.assignedTo ? item.assignedTo.name : 'Unassigned'}</p>
-                                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                    <p style={{ margin: '0 0 0.25rem 0', color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.8rem' }}>Assigned to: {item.assignedTo ? item.assignedTo.name : 'Unassigned'}</p>
+                                    <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                                         <MapPin size={12} /> {item.location?.address || 'No location'}
                                     </p>
                                 </div>
@@ -219,18 +250,18 @@ const AdminDashboard = () => {
                                     }}>
                                         {t('status_' + item.status.toLowerCase().replace(' ', '_'))}
                                     </span>
-                                    <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.8rem' }}>{new Date(item.updatedAt).toLocaleDateString()}</p>
+                                    <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.5)', fontSize: '0.8rem' }}>{new Date(item.updatedAt).toLocaleDateString()}</p>
                                 </div>
                             </div>
                         ))}
                     {issues.length === 0 && (
-                        <div style={{ padding: '1.5rem', textAlign: 'center', color: '#94a3b8' }}>No recent activity.</div>
+                        <div style={{ padding: '1.5rem', textAlign: 'center', color: 'rgba(255, 255, 255, 0.5)' }}>No recent activity.</div>
                     )}
                 </div>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>
                     {filterStatus === 'All' ? t('dashboard_overview') : `${filterStatus} Reports`}
                 </h2>
                 <button className="btn btn-secondary" onClick={handleSummary}>
@@ -252,11 +283,19 @@ const AdminDashboard = () => {
                     </div>
                 ) : (
                     displayedIssues.map(issue => (
-                        <div key={issue._id} className="card">
+                        <div key={issue._id} style={{
+                            marginBottom: '2rem',
+                            background: 'rgba(0, 0, 0, 0.4)',
+                            backdropFilter: 'blur(16px)',
+                            borderRadius: '16px',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            padding: '1.5rem',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                        }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                                 <div>
-                                    <h3>{issue.title}</h3>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{issue.location?.address}</p>
+                                    <h3 style={{ color: 'white' }}>{issue.title}</h3>
+                                    <p style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.7)' }}>{issue.location?.address}</p>
 
                                     {/* Issue Image Thumbnail */}
                                     {issue.images && issue.images.length > 0 && (
@@ -282,7 +321,7 @@ const AdminDashboard = () => {
                                     }}>
                                         {t('status_' + issue.status.toLowerCase().replace(' ', '_'))}
                                     </span>
-                                    {issue.assignedTo && <p style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>Assigned: {issue.assignedTo.name}</p>}
+                                    {issue.assignedTo && <p style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: 'rgba(255, 255, 255, 0.7)' }}>Assigned: {issue.assignedTo.name}</p>}
                                 </div>
                             </div>
 
@@ -318,9 +357,9 @@ const AdminDashboard = () => {
                                 </div>
                             )}
 
-                            <p style={{ marginBottom: '1rem' }}>{issue.ai_enhanced_description || issue.original_description}</p>
+                            <p style={{ marginBottom: '1rem', color: 'rgba(255, 255, 255, 0.9)' }}>{issue.ai_enhanced_description || issue.original_description}</p>
 
-                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', background: 'rgba(0,0,0,0.2)', padding: '0.75rem', borderRadius: 'var(--radius)' }}>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '0.75rem', borderRadius: 'var(--radius)' }}>
                                 {issue.status === 'Resolved' ? (
                                     <span style={{ color: 'var(--success)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         <CheckCircle size={18} /> Resolved
@@ -499,16 +538,24 @@ const AdminDashboard = () => {
 
         return (
             <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}>
                     <Users size={24} /> Field Worker Management
                 </h2>
 
-                <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
-                    <div style={{ padding: '1rem 1.5rem', background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
-                        <h3 style={{ margin: 0, fontSize: '0.875rem', fontWeight: 'bold', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Worker Profiles</h3>
+                <div style={{
+                    padding: '0',
+                    overflow: 'hidden',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    backdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '16px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                }}>
+                    <div style={{ padding: '1rem 1.5rem', background: 'rgba(255, 255, 255, 0.05)', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <h3 style={{ margin: 0, fontSize: '0.875rem', fontWeight: 'bold', color: 'white', textTransform: 'uppercase' }}>Worker Profiles</h3>
                     </div>
                     <div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 100px', padding: '1rem 1.5rem', borderBottom: '1px solid var(--border)', background: 'var(--surface)', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 100px', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', background: 'rgba(0,0,0,0.2)', fontSize: '0.75rem', fontWeight: 'bold', color: 'rgba(255, 255, 255, 0.7)' }}>
                             <div>NAME</div>
                             <div style={{ textAlign: 'right' }}>COMPLETED</div>
                         </div>
@@ -520,16 +567,16 @@ const AdminDashboard = () => {
                                     display: 'grid',
                                     gridTemplateColumns: '1fr 100px',
                                     padding: '1.5rem',
-                                    borderBottom: '1px solid var(--border)',
+                                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                                     cursor: 'pointer',
                                     transition: 'background 0.2s',
-                                    color: 'var(--text)'
+                                    color: 'white'
                                 }}
-                                onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg)'}
+                                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'}
                                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                             >
-                                <div style={{ fontWeight: '500', color: 'var(--text)' }}>{worker.name}</div>
-                                <div style={{ textAlign: 'right', fontWeight: '600', color: 'var(--success)' }}>{worker.completed}</div>
+                                <div style={{ fontWeight: '500', color: 'white' }}>{worker.name}</div>
+                                <div style={{ textAlign: 'right', fontWeight: '600', color: '#10b981' }}>{worker.completed}</div>
                             </div>
                         ))}
                     </div>
@@ -621,92 +668,107 @@ const AdminDashboard = () => {
 
         return (
             <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}>
                     <Filter size={24} /> {t('filter_reports')}
                 </h2>
 
                 {/* Filter Controls */}
-                <div className="glass-card" style={{ marginBottom: '2rem' }}>
+                <div style={{
+                    marginBottom: '2rem',
+                    background: 'rgba(0, 0, 0, 0.5)', // Slightly darker for contrast
+                    backdropFilter: 'blur(16px)',
+                    borderRadius: '24px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    padding: '1.5rem',
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)'
+                }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
                         <div>
-                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>AREA / ZONE</label>
+                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'rgba(255,255,255,0.6)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>AREA / ZONE</label>
                             <select
                                 value={selectedZone}
                                 onChange={(e) => setSelectedZone(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
                             >
-                                <option value="All">All Zones</option>
-                                <option value="North Zone">North Zone</option>
-                                <option value="South Zone">South Zone</option>
-                                <option value="East Zone">East Zone</option>
-                                <option value="West Zone">West Zone</option>
+                                <option style={{ color: 'black' }} value="All">All Zones</option>
+                                <option style={{ color: 'black' }} value="North Zone">North Zone</option>
+                                <option style={{ color: 'black' }} value="South Zone">South Zone</option>
+                                <option style={{ color: 'black' }} value="East Zone">East Zone</option>
+                                <option style={{ color: 'black' }} value="West Zone">West Zone</option>
                             </select>
                         </div>
                         <div>
-                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>CATEGORY</label>
+                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'rgba(255,255,255,0.6)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>CATEGORY</label>
                             <select
                                 value={selectedCategory}
                                 onChange={(e) => setSelectedCategory(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
                             >
-                                <option value="All">All Categories</option>
-                                <option value="Roads">Roads</option>
-                                <option value="Electricity">Electricity</option>
-                                <option value="Water Supply">Water Supply</option>
-                                <option value="Cleanliness">Cleanliness</option>
-                                <option value="Drainage">Drainage</option>
-                                <option value="Infrastructure">Infrastructure</option>
+                                <option style={{ color: 'black' }} value="All">All Categories</option>
+                                <option style={{ color: 'black' }} value="Roads">Roads</option>
+                                <option style={{ color: 'black' }} value="Electricity">Electricity</option>
+                                <option style={{ color: 'black' }} value="Water Supply">Water Supply</option>
+                                <option style={{ color: 'black' }} value="Cleanliness">Cleanliness</option>
+                                <option style={{ color: 'black' }} value="Drainage">Drainage</option>
+                                <option style={{ color: 'black' }} value="Infrastructure">Infrastructure</option>
                             </select>
                         </div>
                         <div>
-                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>TIME PERIOD</label>
+                            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', color: 'rgba(255,255,255,0.6)', marginBottom: '0.5rem', textTransform: 'uppercase' }}>TIME PERIOD</label>
                             <select
                                 value={selectedTimePeriod}
                                 onChange={(e) => setSelectedTimePeriod(e.target.value)}
                                 className="input"
-                                style={{ width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--text)', border: '1px solid var(--border)' }}
+                                style={{ width: '100%', background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
                             >
-                                <option value="All">All Time</option>
-                                <option value="Today">Today</option>
-                                <option value="This Week">This Week</option>
-                                <option value="This Month">This Month</option>
+                                <option style={{ color: 'black' }} value="All">All Time</option>
+                                <option style={{ color: 'black' }} value="Today">Today</option>
+                                <option style={{ color: 'black' }} value="This Week">This Week</option>
+                                <option style={{ color: 'black' }} value="This Month">This Month</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
                 {/* Filter Results Table */}
-                <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+                <div style={{
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    backdropFilter: 'blur(16px)',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    padding: '0', overflow: 'hidden',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                        <thead style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
+                        <thead style={{ background: 'rgba(0,0,0,0.3)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                             <tr>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase' }}>TOKEN</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase' }}>TITLE</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase' }}>AREA</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase' }}>CATEGORY</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', textAlign: 'right' }}>STATUS</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', textTransform: 'uppercase' }}>TOKEN</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', textTransform: 'uppercase' }}>TITLE</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', textTransform: 'uppercase' }}>AREA</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', textTransform: 'uppercase' }}>CATEGORY</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', textTransform: 'uppercase', textAlign: 'right' }}>STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredList.length === 0 ? (
                                 <tr>
-                                    <td colSpan="5" style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>No reports match your filters.</td>
+                                    <td colSpan="5" style={{ padding: '3rem', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>No reports match your filters.</td>
                                 </tr>
                             ) : (
                                 filteredList.map((issue, index) => (
-                                    <tr key={issue._id} style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)' }}>
-                                        <td style={{ padding: '1rem', fontWeight: 'bold', color: 'var(--text)' }}>
+                                    <tr key={issue._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'transparent' }}>
+                                        <td style={{ padding: '1rem', fontWeight: 'bold', color: 'white' }}>
                                             {`T${(index + 1).toString().padStart(3, '0')}`}
                                         </td>
-                                        <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>
+                                        <td style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)' }}>
                                             {issue.title}
                                         </td>
-                                        <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>
+                                        <td style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)' }}>
                                             {issue.zone || 'North Zone'}
                                         </td>
-                                        <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>
+                                        <td style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)' }}>
                                             {issue.category === 'Cleanliness' && '🗑️ '}
                                             {issue.category === 'Drainage' && '💧 '}
                                             {issue.category === 'Infrastructure' && '🚧 '}
@@ -763,12 +825,20 @@ const AdminDashboard = () => {
 
         return (
             <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}>
                     <CheckCircle size={24} /> Pending Resolution Verification
                 </h2>
 
-                <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '150px 2fr 1.5fr 300px', padding: '1rem 1.5rem', borderBottom: '1px solid var(--border)', background: 'var(--bg)', fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                <div style={{
+                    padding: '0',
+                    overflow: 'hidden',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    backdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '16px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '150px 2fr 1.5fr 300px', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)', background: 'rgba(255, 255, 255, 0.05)', fontSize: '0.75rem', fontWeight: 'bold', color: 'white', textTransform: 'uppercase' }}>
                         <div>REPORT ID (TOKEN)</div>
                         <div>ISSUE TITLE</div>
                         <div>WORKER ASSIGNED</div>
@@ -776,7 +846,7 @@ const AdminDashboard = () => {
                     </div>
 
                     {pendingVerificationIssues.length === 0 ? (
-                        <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+                        <div style={{ padding: '3rem', textAlign: 'center', color: 'rgba(255, 255, 255, 0.5)' }}>
                             <p>No solutions pending verification.</p>
                         </div>
                     ) : (
@@ -785,19 +855,19 @@ const AdminDashboard = () => {
                                 display: 'grid',
                                 gridTemplateColumns: '150px 2fr 1.5fr 300px',
                                 padding: '1.5rem',
-                                borderBottom: '1px solid var(--border)',
+                                borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                                 alignItems: 'center',
-                                color: 'var(--text)'
+                                color: 'white'
                             }}>
-                                <div style={{ fontWeight: 'bold', color: 'var(--text)' }}>
+                                <div style={{ fontWeight: 'bold', color: 'white' }}>
                                     {issue._id.slice(-4)}
                                 </div>
-                                <div style={{ fontWeight: '500', color: 'var(--text-muted)' }}>{issue.title}</div>
-                                <div style={{ color: 'var(--text-muted)' }}>{issue.assignedTo?.name || 'Unknown'}</div>
+                                <div style={{ fontWeight: '500', color: 'rgba(255, 255, 255, 0.7)' }}>{issue.title}</div>
+                                <div style={{ color: 'rgba(255, 255, 255, 0.7)' }}>{issue.assignedTo?.name || 'Unknown'}</div>
                                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                                     <button
                                         onClick={() => setViewProofIssue(issue)}
-                                        style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', padding: '0.5rem 1rem', border: '1px solid var(--border)', background: 'var(--surface)', borderRadius: '4px', cursor: 'pointer', fontWeight: '600', color: 'var(--text-muted)', fontSize: '0.8rem' }}
+                                        style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', padding: '0.5rem 1rem', border: '1px solid rgba(255, 255, 255, 0.2)', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '4px', cursor: 'pointer', fontWeight: '600', color: 'white', fontSize: '0.8rem' }}
                                     >
                                         <Eye size={16} /> VIEW PROOF
                                     </button>
@@ -895,53 +965,68 @@ const AdminDashboard = () => {
 
         return (
             <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem' }}>Cost Analysis & Projections</h2>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', color: 'white' }}>Cost Analysis & Projections</h2>
 
                 {/* Summary Cards */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
-                    <div className="glass-card" style={{
+                    <div style={{
                         padding: '1.5rem',
                         borderLeft: '4px solid #2563eb', // Blue
-                        borderRadius: '16px'
+                        borderRadius: '16px',
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '4px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{totalCost.toLocaleString()}</h3>
-                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Total Estimated Expenditure</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'white' }}>₹{totalCost.toLocaleString()}</h3>
+                        <p style={{ color: 'rgba(255, 255, 255, 0.7)', margin: 0 }}>Total Estimated Expenditure</p>
                     </div>
-                    <div className="glass-card" style={{
+                    <div style={{
                         padding: '1.5rem',
                         borderLeft: '4px solid #10b981', // Green
-                        borderRadius: '16px'
+                        borderRadius: '16px',
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '4px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{utilizedCost.toLocaleString()}</h3>
-                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Funds Utilized (YTD)</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'white' }}>₹{utilizedCost.toLocaleString()}</h3>
+                        <p style={{ color: 'rgba(255, 255, 255, 0.7)', margin: 0 }}>Funds Utilized (YTD)</p>
                     </div>
-                    <div className="glass-card" style={{
+                    <div style={{
                         padding: '1.5rem',
                         borderLeft: '4px solid #f59e0b', // Orange
-                        borderRadius: '16px'
+                        borderRadius: '16px',
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderLeftWidth: '4px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{remainingCost.toLocaleString()}</h3>
-                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Projected Remaining (Pending)</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'white' }}>₹{remainingCost.toLocaleString()}</h3>
+                        <p style={{ color: 'rgba(255, 255, 255, 0.7)', margin: 0 }}>Projected Remaining (Pending)</p>
                     </div>
                 </div>
 
                 {/* Detailed Cost Table */}
-                <div className="card" style={{
+                <div style={{
                     padding: '0',
                     overflow: 'hidden',
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(12px)',
-                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                    background: 'rgba(0, 0, 0, 0.4)',
+                    backdropFilter: 'blur(16px)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '16px'
                 }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                        <thead style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
+                        <thead style={{ background: 'rgba(0,0,0,0.3)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                             <tr>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>Report Name / Issue</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>Date</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>Status</th>
-                                <th style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.875rem', textAlign: 'right' }}>Estimated Cost</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>Report Name / Issue</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>Date</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>Status</th>
+                                <th style={{ padding: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', textAlign: 'right' }}>Estimated Cost</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -949,12 +1034,12 @@ const AdminDashboard = () => {
                                 const isFixed = issue.status === 'Resolved';
                                 // Always allow editing for admin power
                                 return (
-                                    <tr key={issue._id} style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)' }}>
-                                        <td style={{ padding: '1rem', fontWeight: '500', color: 'var(--text)' }}>
+                                    <tr key={issue._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', background: 'transparent' }}>
+                                        <td style={{ padding: '1rem', fontWeight: '500', color: 'white' }}>
                                             {issue.title}
-                                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>{issue.location?.address}</div>
+                                            <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 'normal' }}>{issue.location?.address}</div>
                                         </td>
-                                        <td style={{ padding: '1rem', color: 'var(--text-muted)' }}>
+                                        <td style={{ padding: '1rem', color: 'rgba(255, 255, 255, 0.7)' }}>
                                             {new Date(issue.createdAt || Date.now()).toLocaleDateString()}
                                         </td>
                                         <td style={{ padding: '1rem' }}>
@@ -971,7 +1056,7 @@ const AdminDashboard = () => {
                                             </span>
                                         </td>
                                         <td style={{ padding: '1rem', textAlign: 'right', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-                                            <span style={{ marginRight: '0.25rem', color: 'var(--text)', fontWeight: '600' }}>₹</span>
+                                            <span style={{ marginRight: '0.25rem', color: 'white', fontWeight: '600' }}>₹</span>
                                             <div style={{ display: 'flex', gap: '0.5rem' }}>
                                                 <input
                                                     type="number"
@@ -1036,12 +1121,14 @@ const AdminDashboard = () => {
                 left: 0,
                 bottom: 0,
                 width: '280px',
-                background: '#064e3b', // Deep Bottle Green (Tailwind emerald-900 like) - Adjusted Match
+                background: 'rgba(0, 0, 0, 0.4)', // Translucent Black/Dark
+                backdropFilter: 'blur(16px)',     // Strong blur for glass effect
+                borderRight: '1px solid rgba(255, 255, 255, 0.1)',
                 color: 'white',
                 zIndex: 1000,
                 transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)',
                 transition: 'transform 0.3s ease-in-out',
-                boxShadow: '4px 0 10px rgba(0,0,0,0.1)',
+                boxShadow: '4px 0 24px rgba(0,0,0,0.4)',
                 display: 'flex',
                 flexDirection: 'column'
             }}>
@@ -1062,7 +1149,7 @@ const AdminDashboard = () => {
                 <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', margin: '0 1.5rem 1rem 1.5rem' }}></div>
 
                 {/* Menu */}
-                <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '0 1rem' }}>
+                <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '0 1rem', background: 'transparent', backdropFilter: 'none', border: 'none', position: 'static' }}>
                     {menuItems.map((item, idx) => (
                         <React.Fragment key={item.id}>
                             {/* Insert Divider if needed based on grouping */}
@@ -1154,12 +1241,12 @@ const AdminDashboard = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '1rem',
-                    background: '#064e3b', // Bottle Green to match sidebar
+                    background: 'rgba(0, 0, 0, 0.4)', // Translucent dark to match sidebar
                     color: 'white',        // White text for contrast
-                    backdropFilter: 'blur(10px)',
+                    backdropFilter: 'blur(16px)',
                     padding: '1rem',
                     borderRadius: '16px',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.2)', // Slightly stronger shadow
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)', // Slightly stronger shadow
                     border: '1px solid rgba(255, 255, 255, 0.1)'
                 }}>
                     <button
