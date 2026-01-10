@@ -854,39 +854,39 @@ const AdminDashboard = () => {
         );
     };
 
+    // --- COST ANALYSIS STATE ---
+    const [issueCosts, setIssueCosts] = useState({});
+
+    useEffect(() => {
+        const initialCosts = {};
+        issues.forEach(issue => {
+            initialCosts[issue._id] = issue.cost || 0;
+        });
+        setIssueCosts(initialCosts);
+    }, [issues]);
+
+    const handleCostChangeLocal = (id, newCost) => {
+        setIssueCosts(prev => ({
+            ...prev,
+            [id]: Number(newCost)
+        }));
+    };
+
+    const saveCost = async (id) => {
+        try {
+            const cost = issueCosts[id];
+            // Dynamic import can stay, or move to top. Keeping it here is fine as it's an async function, not a hook.
+            await import('../services/api').then(module => module.updateIssueCost(id, cost));
+            alert('Cost updated successfully');
+            fetchData();
+        } catch (error) {
+            console.error(error);
+            alert('Failed to update cost');
+        }
+    };
+
     // Cost Analysis View
     const renderCostAnalysis = () => {
-        // State to manage editable costs - initialized from issues prop
-        const [issueCosts, setIssueCosts] = useState({});
-
-        // Initialize local state when issues change
-        useEffect(() => {
-            const initialCosts = {};
-            issues.forEach(issue => {
-                initialCosts[issue._id] = issue.cost || 0;
-            });
-            setIssueCosts(initialCosts);
-        }, [issues]);
-
-        const handleCostChangeLocal = (id, newCost) => {
-            setIssueCosts(prev => ({
-                ...prev,
-                [id]: Number(newCost)
-            }));
-        };
-
-        const saveCost = async (id) => {
-            try {
-                const cost = issueCosts[id];
-                await import('../services/api').then(module => module.updateIssueCost(id, cost));
-                alert('Cost updated successfully');
-                fetchData(); // Refresh to ensure sync
-            } catch (error) {
-                console.error(error);
-                alert('Failed to update cost');
-            }
-        };
-
         const totalCost = issues.reduce((acc, issue) => acc + (issue.cost || 0), 0);
 
         return (
