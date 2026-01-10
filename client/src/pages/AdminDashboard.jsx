@@ -888,6 +888,10 @@ const AdminDashboard = () => {
     // Cost Analysis View
     const renderCostAnalysis = () => {
         const totalCost = issues.reduce((acc, issue) => acc + (issue.cost || 0), 0);
+        const utilizedCost = issues
+            .filter(i => i.status === 'Resolved' || i.status === 'Closed')
+            .reduce((acc, issue) => acc + (issue.cost || 0), 0);
+        const remainingCost = totalCost - utilizedCost;
 
         return (
             <div>
@@ -895,38 +899,29 @@ const AdminDashboard = () => {
 
                 {/* Summary Cards */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
-                    <div className="card" style={{
-                        borderLeft: '4px solid #2563eb',
-                        background: 'rgba(255, 255, 255, 0.85)',
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-                        border: '1px solid rgba(255, 255, 255, 0.18)',
+                    <div className="glass-card" style={{
+                        padding: '1.5rem',
+                        borderLeft: '4px solid #2563eb', // Blue
                         borderRadius: '16px'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0 }}>₹{totalCost.toLocaleString()}</h3>
-                        <p style={{ color: '#64748b' }}>Total Estimated Expenditure</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{totalCost.toLocaleString()}</h3>
+                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Total Estimated Expenditure</p>
                     </div>
-                    <div className="card" style={{
-                        borderLeft: '4px solid #10b981',
-                        background: 'rgba(255, 255, 255, 0.85)',
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-                        border: '1px solid rgba(255, 255, 255, 0.18)',
+                    <div className="glass-card" style={{
+                        padding: '1.5rem',
+                        borderLeft: '4px solid #10b981', // Green
                         borderRadius: '16px'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0 }}>₹{(totalCost * 0.45).toLocaleString()}</h3>
-                        <p style={{ color: '#64748b' }}>Funds Utilized (YTD)</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{utilizedCost.toLocaleString()}</h3>
+                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Funds Utilized (YTD)</p>
                     </div>
-                    <div className="card" style={{
-                        borderLeft: '4px solid #f59e0b',
-                        background: 'rgba(255, 255, 255, 0.85)',
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-                        border: '1px solid rgba(255, 255, 255, 0.18)',
+                    <div className="glass-card" style={{
+                        padding: '1.5rem',
+                        borderLeft: '4px solid #f59e0b', // Orange
                         borderRadius: '16px'
                     }}>
-                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0 }}>₹{(totalCost * 0.55).toLocaleString()}</h3>
-                        <p style={{ color: '#64748b' }}>Projected Remaining</p>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 'bold', margin: 0, color: 'var(--text)' }}>₹{remainingCost.toLocaleString()}</h3>
+                        <p style={{ color: 'var(--text-muted)', margin: 0 }}>Projected Remaining (Pending)</p>
                     </div>
                 </div>
 
