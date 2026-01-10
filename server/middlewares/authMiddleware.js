@@ -17,6 +17,8 @@ const authMiddleware = (roles = []) => {
                 return res.status(401).json({ message: 'User not found' });
             }
 
+            req.user = decoded;
+
             if (roles.length > 0 && !roles.includes(decoded.role)) {
                 console.warn(`[Auth] ACCESS DENIED. UserRole: ${decoded.role}, Required: ${JSON.stringify(roles)}`);
                 return res.status(403).json({ message: 'Access denied' });
