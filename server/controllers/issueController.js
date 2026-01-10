@@ -40,7 +40,7 @@ exports.createIssue = async (req, res) => {
         res.status(201).json(issue);
     } catch (error) {
         logToFile(`[createIssue] ERROR: ${error.message}`);
-        res.status(500).json({ message: 'Error creating issue', error: error.message });
+        res.status(500).json({ message: `Error creating issue: ${error.message}`, error: error.message });
     }
 };
 
