@@ -8,8 +8,11 @@ const issueRoutes = require('./routes/issueRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 const adminAiRoutes = require('./routes/adminAiRoutes');
 
+const compression = require('compression');
+
 const app = express();
 
+app.use(compression()); // Compress all responses
 app.use(cors({
     origin: ['https://samadhan-setu-client.vercel.app', 'http://localhost:5173'],
     credentials: true
@@ -18,27 +21,51 @@ app.use(express.json({ limit: '500mb' }));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));
 
 app.use((req, res, next) => {
-    const bodySize = req.body ? JSON.stringify(req.body).length : 0;
-    const log = `[${new Date().toISOString()}] ${req.method} ${req.url} | Body Size: ${bodySize}`;
-    console.log(log);
+    // Only log if not in production to save logs
+    if (process.env.NODE_ENV !== 'production') {
+        const bodySize = req.body ? JSON.stringify(req.body).length : 0;
+        console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} | Body Size: ${bodySize}`);
+    }
     next();
 });
 
+// --- Serverless MongoDB Connection Pattern ---
+let cached = global.mongoose;
+if (!cached) {
+    cached = global.mongoose = { conn: null, promise: null };
+}
+
 const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('MongoDB connected (Cloud)');
-    } catch (err) {
-        console.error('Cloud MongoDB failed:', err.message);
-        // On Vercel, we simply fail if Cloud DB fails. No memory server fallback.
-        console.error('FATAL: Could not connect to MongoDB.');
+    if (cached.conn) return cached.conn;
+
+    if (!cached.promise) {
+        const opts = {
+            bufferCommands: false, // Disable buffering for serverless
+        };
+        cached.promise = mongoose.connect(process.env.MONGO_URI, opts).then((mongoose) => {
+            console.log('MongoDB connected (Cloud - New Connection)');
+            return mongoose;
+        });
     }
+    try {
+        cached.conn = await cached.promise;
+    } catch (e) {
+        cached.promise = null;
+        throw e;
+    }
+    return cached.conn;
 };
 
-const PORT = process.env.PORT || 5000;
+// Middleware to ensure DB is connected before handling legitimate requests
+app.use(async (req, res, next) => {
+    // Skip for root health check if needed, but safer to just ensure DB for all API routes
+    if (req.path.startsWith('/api')) {
+        await connectDB();
+    }
+    next();
+});
 
-// Connect to Database
-connectDB().catch(err => console.error("Database connection error:", err));
+const PORT = process.env.PORT || 5000;
 
 // Routes
 app.use('/api/auth', authRoutes);
