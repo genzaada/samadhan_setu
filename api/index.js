@@ -98,7 +98,9 @@ const connectDB = async () => {
         }
     }
 };
-
+app.get("/", (req, res) => {
+	res.status(200).json({ message: "server is alive 🚀"});
+});
 // Middleware to ensure DB is connected before handling legitimate requests
 app.use(async (req, res, next) => {
     // Skip for root health check if needed, but safer to just ensure DB for all API routes
