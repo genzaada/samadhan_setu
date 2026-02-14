@@ -68,12 +68,11 @@ app.use(async (req, res, next) => {
 });
 
 // IMPORTANT: No /api prefix here (Vercel already adds it)
-app.use('/auth', authRoutes);
-app.use('/issues', issueRoutes);
-app.use('/feedback', feedbackRoutes);
-app.use('/ai', aiRoutes);
-app.use('/admin/ai', adminAiRoutes);
-
+app.use('/api/auth', authRoutes);
+app.use('/api/issues', issueRoutes);
+app.use('/api/feedback', feedbackRoutes);
+app.use('/api/ai', aiRoutes);
+app.use('/api/admin/ai', adminAiRoutes);
 // Local development only
 const PORT = process.env.PORT || 5000;
 
