@@ -26,15 +26,13 @@ app.use(cors({
             return callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    credentials: true
 }));
 
-app.use(express.json({ limit: '500mb' }));
-app.use(express.urlencoded({ limit: '500mb', extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true }));
 
-// --- MongoDB Connection ---
+// ---- MongoDB Connection (Serverless Safe) ----
 let cached = global.mongoose;
 
 if (!cached) {
@@ -45,22 +43,13 @@ const connectDB = async () => {
     if (cached.conn) return cached.conn;
 
     if (!cached.promise) {
-        const opts = {
+        cached.promise = mongoose.connect(process.env.MONGO_URI, {
             bufferCommands: false,
             serverSelectionTimeoutMS: 5000
-        };
-
-        console.log('Attempting to connect to MongoDB Atlas...');
-
-        cached.promise = mongoose.connect(process.env.MONGO_URI, opts)
-            .then((mongoose) => {
-                console.log('✅ MongoDB connected');
-                return mongoose;
-            })
-            .catch(err => {
-                console.error('❌ MongoDB connection error:', err);
-                throw err;
-            });
+        }).then((mongoose) => {
+            console.log('✅ MongoDB connected');
+            return mongoose;
+        });
     }
 
     cached.conn = await cached.promise;
@@ -68,26 +57,26 @@ const connectDB = async () => {
 };
 
 // Health check
-app.get("/", (req, res) => {
-    res.status(200).json({ message: "Server is alive 🚀" });
+app.get("/", async (req, res) => {
+    res.status(200).json({ message: "API is live 🚀" });
 });
 
-// Ensure DB connection for all API routes
+// Ensure DB connection before handling routes
 app.use(async (req, res, next) => {
     await connectDB();
     next();
 });
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/issues', issueRoutes);
-app.use('/api/feedback', feedbackRoutes);
-app.use('/api/ai', aiRoutes);
-app.use('/api/admin/ai', adminAiRoutes);
+// IMPORTANT: No /api prefix here (Vercel already adds it)
+app.use('/auth', authRoutes);
+app.use('/issues', issueRoutes);
+app.use('/feedback', feedbackRoutes);
+app.use('/ai', aiRoutes);
+app.use('/admin/ai', adminAiRoutes);
 
+// Local development only
 const PORT = process.env.PORT || 5000;
 
-// Only listen if run directly (local dev)
 if (require.main === module) {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
