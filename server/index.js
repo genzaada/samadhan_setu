@@ -48,25 +48,55 @@ if (!cached) {
     cached = global.mongoose = { conn: null, promise: null };
 }
 
+const { MongoMemoryServer } = require('mongodb-memory-server');
+
 const connectDB = async () => {
     if (cached.conn) return cached.conn;
 
-    if (!cached.promise) {
-        const opts = {
-            bufferCommands: false, // Disable buffering for serverless
-        };
-        cached.promise = mongoose.connect(process.env.MONGO_URI, opts).then((mongoose) => {
-            console.log('MongoDB connected (Cloud - New Connection)');
-            return mongoose;
-        });
-    }
+    // Try connecting to the configured URI (Atlas) first
     try {
+        if (!cached.promise) {
+            const opts = {
+                bufferCommands: false,
+            };
+            console.log('Attempting to connect to MongoDB Atlas...');
+            cached.promise = mongoose.connect(process.env.MONGO_URI, { ...opts, serverSelectionTimeoutMS: 5000 }).then((mongoose) => {
+                console.log('✅ MongoDB connected (Atlas)');
+                return mongoose;
+            });
+        }
         cached.conn = await cached.promise;
-    } catch (e) {
-        cached.promise = null;
-        throw e;
+        return cached.conn;
+    } catch (error) {
+        console.error('❌ Failed to connect to MongoDB Atlas:', error.message);
+        console.log('⚠️  Falling back to In-Memory Database...');
+
+        try {
+            // Reset promise for retry
+            cached.promise = null;
+
+            // Start In-Memory Server
+            const mongod = await MongoMemoryServer.create();
+            const uri = mongod.getUri();
+
+            console.log(`Attempting to connect to In-Memory DB at: ${uri}`);
+
+            const opts = {
+                bufferCommands: false,
+            };
+
+            cached.promise = mongoose.connect(uri, opts).then((mongoose) => {
+                console.log('✅ MongoDB connected (In-Memory)');
+                return mongoose;
+            });
+
+            cached.conn = await cached.promise;
+            return cached.conn;
+        } catch (memError) {
+            console.error('❌ Failed to start In-Memory Database:', memError);
+            throw memError;
+        }
     }
-    return cached.conn;
 };
 
 // Middleware to ensure DB is connected before handling legitimate requests

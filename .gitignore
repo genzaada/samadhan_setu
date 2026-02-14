@@ -4,6 +4,12 @@ pnpm-lock.yaml
 yarn.lock
 package-lock.json
 
+node_modules/
+server/node_modules/
+client/node_modules/
+.env
+.DS_Store
+
 # Environment variables
 .env
 .env.local
